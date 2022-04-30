@@ -6,7 +6,7 @@ const Terminal = () => {
 
     React.useEffect(() => {
         // You can call any method in XTerm.js by using 'xterm xtermRef.current.terminal.[What you want to call]
-        xtermRef.current.terminal.writeln("Hello, World!")
+        xtermRef.current.terminal.writeln("Hello World!")
     }, [])
 
     return (
