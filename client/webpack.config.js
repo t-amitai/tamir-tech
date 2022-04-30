@@ -4,11 +4,11 @@ var DIST_DIR = path.join(__dirname, '/dist');
 
 module.exports = {
   devtool: 'inline-source-map',
-  entry: `${SRC_DIR}/index.js`,
+  entry: `${SRC_DIR}/index.tsx`,
   module: {
     rules: [
       {
-        test: /\.(js|jsx)?/,
+        test: /\.(js|tsx)?/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -23,7 +23,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['*', '.js', '.tsx'],
   },
   output: {
     filename: 'bundle.js',
