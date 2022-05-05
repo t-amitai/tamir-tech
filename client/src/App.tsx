@@ -1,31 +1,35 @@
 import React from 'react'
-import {Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container} from '@material-ui/core'
-import AppsIcon from "@material-ui/icons/Apps"
-import {Terminal} from './Terminal'
-import {Header} from './Header'
+import {CssBaseline} from '@material-ui/core'
+import {HashRouter, Route, Routes} from 'react-router-dom'
+import {Home} from './views/Home'
+import {Projects} from './views/Projects'
+import {Resume} from './views/Resume'
+import {PageNotFound} from './views/PageNotFound'
+import {Copyright} from './components/Copyright'
+import {NavBar} from './components/NavBar'
 
 const App = function(){
     return (
         <>
             <CssBaseline />
-            <Header />
-            <main>
-                <div>
-                    <Container maxWidth="sm" >
-                        <Typography variant="h2" align="center" color="textPrimary" gutterBottom >
-                            Website
-                        </Typography>
-                        <Typography variant="h5" align="center" color="textSecondary" paragraph >
-                            This is a place to showcase the work I've done.
-                        </Typography>
-                    </Container>
-                    <Terminal/>
-                </div>
-            </main>
+            <HashRouter>
+                <header>
+                    <NavBar />
+                </header>
+                <main>
+                    <Routes>
+                        <Route path="/" element= {<Home />} />
+                        <Route path="projects" element={<Projects />} />
+                        <Route path="resume" element={<Resume />} />
+                        <Route path="*" element={<PageNotFound />} />
+                    </Routes>
+                </main>
+                <footer>
+                    <Copyright/>
+                </footer>
+            </HashRouter>
         </>
-    //    <h1>Hello world</h1>
-    )
-        
+    )      
 }
 
 export {App}
