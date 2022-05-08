@@ -12,4 +12,4 @@ def serve(path):
     return send_from_directory(app.static_folder,'index.html')
 
 
-api.add_resource(HangmanHandler)
+api.add_resource(HangmanHandler, '/hangman')
