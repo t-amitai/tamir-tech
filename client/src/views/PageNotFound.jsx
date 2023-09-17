@@ -3,22 +3,7 @@ import slateLake from '../images/slateLake.jpg'
 
 export default function PageNotFound() {
     return (
-        <>
-        {/*
-          This example requires updating your template:
-  
-          ```
-          <html class="h-full">
-          <body class="h-full">
-          ```
-        */}
-        <main
-          className="min-h-screen bg-cover bg-bottom"
-          style={{
-            backgroundImage: `url(${slateLake})`,
-          }}
-        >
-          <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-48">
+        <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-48">
             <p className="text-base font-semibold text-black text-opacity-50">404</p>
             <h1 className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">Uh oh! I think you’re lost.</h1>
             <p className="mt-2 text-lg font-medium text-black text-opacity-50">
@@ -32,8 +17,6 @@ export default function PageNotFound() {
                 Go back home
               </a>
             </div>
-          </div>
-        </main>
-      </>
+        </div>
     )
   }
