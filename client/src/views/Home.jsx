@@ -1,10 +1,8 @@
 import * as React from 'react'
 import slateLake from '../images/slateLake.jpg'
 
-function Home() {
+export default function Home() {
     return (
         <div>Home</div>
     )
 }
-
-export {Home}
