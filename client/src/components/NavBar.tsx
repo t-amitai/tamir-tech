@@ -4,10 +4,7 @@ import {Box, ButtonBase, Typography} from '@material-ui/core'
 
 function NavBar() {
     return (
-        <Box sx={{ display: "flex",
-                   justifyContent: "left",
-                   flexShrink: 3 }}
-        >
+        <Box sx={{display: "flex", justifyContent: "left"}}>
             <Typography>
                 Tamir Amitai
             </Typography>
