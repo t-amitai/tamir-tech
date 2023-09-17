@@ -1,6 +1,6 @@
-var path = require('path');
-var SRC_DIR = path.join(__dirname, '/src');
-var DIST_DIR = path.join(__dirname, '/dist');
+const path = require('path');
+const SRC_DIR = path.join(__dirname, '/src');
+const DIST_DIR = path.join(__dirname, '/dist');
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -11,15 +11,24 @@ module.exports = {
         test: /\.(js|tsx)?/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
             presets: [
-              "@babel/preset-env",
-              "@babel/preset-react"
+              '@babel/preset-env',
+              '@babel/preset-react'
             ]
           }
         }
-      }
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]'
+          }
+        }
+      },
     ]
   },
   resolve: {

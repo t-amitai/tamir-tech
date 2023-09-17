@@ -1,17 +1,16 @@
-import React from 'react'
-import { AppBar, Toolbar, Typography } from '@material-ui/core'
-import AppsIcon from "@material-ui/icons/Apps"
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Header = () => {
+export function Header ({views}) {
     return (
-        <AppBar position="relative" >
-            <Toolbar>
-                <AppsIcon />
-                <Typography variant="h6" >
-                    Tamir Amitai
-                </Typography>
-            </Toolbar>
-        </AppBar>
+        <div>
+            {views.map((view) => {
+                return (
+                    <Link to={view}>
+                        {view}
+                    </Link>
+                )
+            })}
+        </div>
     )
 }
-export {Header}

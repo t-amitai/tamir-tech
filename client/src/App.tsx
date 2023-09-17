@@ -1,26 +1,29 @@
 import React from 'react'
-import {CssBaseline} from '@material-ui/core'
-import {HashRouter, Route, Routes} from 'react-router-dom'
-import {Home} from './views/Home'
-import {Projects} from './views/Projects'
-import {Resume} from './views/Resume'
-import {PageNotFound} from './views/PageNotFound'
-import {Copyright} from './components/Copyright'
-import {NavBar} from './components/NavBar'
+import { HashRouter, Route, Routes, Link } from 'react-router-dom'
+import { Home } from './views/Home'
+import { About } from './views/About'
+import { Resume } from './views/Resume'
+import { Header } from './components/Header'
+import { PageNotFound } from './views/PageNotFound'
+import { Copyright } from './components/Copyright'
+
+const VIEWS = ['About', 'Resume'];
 
 const App = function(){
     return (
         <>
-            <CssBaseline />
             <HashRouter>
                 <header>
-                    <NavBar />
+                    <Header views={VIEWS}/>
                 </header>
                 <main>
                     <Routes>
                         <Route path="/" element= {<Home />} />
-                        <Route path="projects" element={<Projects />} />
-                        <Route path="resume" element={<Resume />} />
+                        {VIEWS.map((view)=>{
+                            const path = view;
+                            const element = <view />;
+                            return <Route path={path} element={element} />
+                        })};
                         <Route path="*" element={<PageNotFound />} />
                     </Routes>
                 </main>

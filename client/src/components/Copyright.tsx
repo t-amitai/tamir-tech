@@ -1,16 +1,14 @@
 import React from 'react'
-import {Typography} from '@material-ui/core'
 
-function Copyright(props) {
+export function Copyright() {
   return (
-    <Typography variant="body2" color="secondary.main" align="center" {...props}>
+    <div>
       {'Copyright © '}
       Tamir Amitai
       {' '}
       {new Date().getFullYear()}
       {'.'}
-    </Typography>
+    </div>
   )
 }
 
-export {Copyright}
