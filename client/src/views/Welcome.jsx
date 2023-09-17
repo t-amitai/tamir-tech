@@ -4,10 +4,14 @@ import slateLake from "../images/slateLake.jpg";
 export default function Welcome() {
     return(
         <div
-            className="min-h-screen bg-cover bg-bottom"
+            className=""
             style={{
                 backgroundImage: `url(${slateLake})`,
             }}
-        ></div>
+        >Welcome</div>
     )
+}
+
+export function welcomeAnimation(){
+    console.log('welcome animation!')
 }
