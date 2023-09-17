@@ -4,7 +4,7 @@ import slateLake from "../images/slateLake.jpg";
 export default function Welcome() {
     return(
         <div
-            className=""
+            className="min-h-full bg-cover"
             style={{
                 backgroundImage: `url(${slateLake})`,
             }}

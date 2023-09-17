@@ -10,7 +10,7 @@ import PageNotFound from './views/PageNotFound'
 import Copyright from './components/Copyright'
 
 const App = function(){
-    const [welcome, setWelcome] = React.useState(true)
+    const [welcome, setWelcome] = React.useState(false)
 
     /* Welcome animation */
     useEffect(() => {
@@ -24,18 +24,11 @@ const App = function(){
     return (
         <HashRouter>
             <header className="font-sans text-xl lg:text-2xl bg-cyan-400">
-                <Header
-                    navigation={[
-                        {name: 'Home', link:'home'},
-                        {name:'About', link:'about'},
-                        {name:'Resume', link:'resume'},
-                        {name:'Projects', link:'project'},
-                    ]}
-                />
+                <Header />
             </header>
-            <main className="min-h-full text-lg bg-gradient-to-b from-cyan-400 to-teal-400">
+            <main className="min-h-screen text-lg bg-gradient-to-b from-cyan-400 to-teal-400">
                 <Routes>
-                    <Route path="/home" element={<Home />} />
+                    <Route path="home" element={<Home />} />
                     <Route path="welcome" element={<Welcome />} />
                     <Route path="about" element={<About />} />
                     <Route path="resume" element={<Resume />} />
