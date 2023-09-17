@@ -3,31 +3,31 @@ import { HashRouter, Route, Routes, Link } from 'react-router-dom'
 import { Home } from './views/Home'
 import { About } from './views/About'
 import { Resume } from './views/Resume'
-import { Header } from './components/Header'
-import { PageNotFound } from './views/PageNotFound'
-import { Copyright } from './components/Copyright'
+import Header from './components/Header'
+import PageNotFound from './views/PageNotFound'
+import Copyright from './components/Copyright'
 
-const VIEWS = ['About', 'Resume'];
+const navigation = [
+    { name: 'About', href: '#/About' },
+    { name: 'Resume', href: '#/Resume' },
+]
 
 const App = function(){
     return (
         <>
             <HashRouter>
-                <header>
-                    <Header views={VIEWS}/>
+                <header className="bg-gray-600">
+                    <Header navigation={navigation}/>
                 </header>
-                <main>
+                <main className="bg-gray-600 min-h-fit">
                     <Routes>
-                        <Route path="/" element= {<Home />} />
-                        {VIEWS.map((view)=>{
-                            const path = view;
-                            const element = <view />;
-                            return <Route path={path} element={element} />
-                        })};
-                        <Route path="*" element={<PageNotFound />} />
+                        <Route path="/" element= {<Home />} key='Home'/>
+                        <Route path={"About"} element={<About />} key={"About"} />
+                        <Route path={"Resume"} element={<Resume />} key={"Resume"} />
+                        <Route path="*" element={<PageNotFound />} key='PageNotFound' />
                     </Routes>
                 </main>
-                <footer>
+                <footer className="bg-gray-600 ">
                     <Copyright/>
                 </footer>
             </HashRouter>
