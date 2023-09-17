@@ -1,9 +1,9 @@
-import * as React from 'react'
+import React from 'react'
 import {Typography} from '@material-ui/core'
 
-function Copyright() {
+function Copyright(props) {
   return (
-    <Typography>
+    <Typography variant="body2" color="secondary.main" align="center" {...props}>
       {'Copyright © '}
       Tamir Amitai
       {' '}
