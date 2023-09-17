@@ -1,6 +1,7 @@
 client/node_modules
 client/dist/bundle.js
 client/dist/output.css
+client/dist/assets/*
 
 server/__pycache__
 server/api/__pycache__

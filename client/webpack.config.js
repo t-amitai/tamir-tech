@@ -22,10 +22,12 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
+        include: [`${SRC_DIR}/images`],
         use: {
           loader: 'file-loader',
           options: {
-            name: '[name].[ext]'
+            name: '[name].[ext]',
+            outputPath: `assets`
           }
         }
       },
