@@ -23,10 +23,10 @@ const App = function(){
 
     return (
         <HashRouter>
-            <header className="font-sans text-xl lg:text-2xl bg-cyan-400">
+            <header className="text-sm lg:text-lg 2xl:text-4xl bg-cyan-400">
                 <Header />
             </header>
-            <main className="min-h-screen text-lg bg-gradient-to-b from-cyan-400 to-teal-400">
+            <main className="min-h-screen text-lg 2xl:text-2xl bg-gradient-to-b from-cyan-400 to-teal-400">
                 <Routes>
                     <Route path="home" element={<Home />} />
                     <Route path="welcome" element={<Welcome />} />
