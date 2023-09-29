@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom'
 import iconPic from '../images/iconPic.jpg'
 
 const navigation= [
-    {name:'Home', link:'home'},
-    {name:'About', link:'about'},
-    {name:'Resume', link:'resume'},
-    {name:'Projects', link:'project'},
+    {name:'Home', link:'/home'},
+    {name:'About', link:'/about'},
+    {name:'Resume', link:'/resume'},
+    {name:'Projects', link:'/projects'},
 ]
 
 function HeaderButton({nav}) {
     return (
             <Link to={nav.link}> {
-                nav.link !== 'home' ?
+                nav.name !== 'Home' ?
                     <button
                         className="m-2 xl:m-4 xl:p-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:text-gray-500"
                     >{nav.name}</button>

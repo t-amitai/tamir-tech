@@ -10,7 +10,7 @@ import PageNotFound from './views/PageNotFound'
 import Copyright from './components/Copyright'
 
 const App = function(){
-    const [welcome, setWelcome] = React.useState(false)
+    const [welcome, setWelcome] = React.useState(true)
 
     /* Welcome animation */
     useEffect(() => {
@@ -31,8 +31,8 @@ const App = function(){
             </header>
             <main className="text-lg 2xl:text-2xl">
                 <Routes>
-                    <Route path="home" element={<Home />} />
                     <Route path="welcome" element={<Welcome />} />
+                    <Route path="home" element={<Home />} />
                     <Route path="about" element={<About />} />
                     <Route path="resume" element={<Resume />} />
                     <Route path="projects" element={<UnderConstruction />} />
