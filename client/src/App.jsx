@@ -23,10 +23,13 @@ const App = function(){
 
     return (
         <HashRouter>
-            <header className="font-sans text-xl lg:text-2xl bg-cyan-400">
+        <div
+            className="min-h-screen bg-gradient-to-b from-cyan-400 to-teal-400 flex flex-col justify-between"
+        >
+            <header className="text-sm lg:text-lg 2xl:text-4xl">
                 <Header />
             </header>
-            <main className="min-h-screen text-lg bg-gradient-to-b from-cyan-400 to-teal-400">
+            <main className="text-lg 2xl:text-2xl">
                 <Routes>
                     <Route path="home" element={<Home />} />
                     <Route path="welcome" element={<Welcome />} />
@@ -36,11 +39,12 @@ const App = function(){
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </main>
-            <footer className="sticky bottom-0 lg:text-4xl bg-teal-400">
+            <footer className="lg:text-4xl">
                 <Copyright/>
             </footer>
+        </div>
         </HashRouter>
-    )      
+    )
 }
 
 export {App}
