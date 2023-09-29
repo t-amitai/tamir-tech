@@ -24,7 +24,7 @@ const App = function(){
     return (
         <HashRouter>
         <div
-            className="min-h-screen bg-gradient-to-b from-cyan-400 to-teal-400 flex flex-col"
+            className="min-h-screen bg-gradient-to-b from-cyan-400 to-teal-400 flex flex-col justify-between"
         >
             <header className="text-sm lg:text-lg 2xl:text-4xl">
                 <Header />
@@ -39,7 +39,7 @@ const App = function(){
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </main>
-            <footer className="items-end lg:text-4xl">
+            <footer className="lg:text-4xl">
                 <Copyright/>
             </footer>
         </div>
