@@ -14,7 +14,7 @@ function HeaderButton({nav}) {
             <Link to={nav.link}> {
                 nav.link !== 'home' ?
                     <button
-                        className="m-2 xl:m-4 xl:p-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:text-gray-600"
+                        className="m-2 xl:m-4 xl:p-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:text-gray-500"
                     >{nav.name}</button>
                 :
                     <button
