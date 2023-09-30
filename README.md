@@ -1,7 +1,8 @@
 # tamir-tech
 Personal website showcasing my technical achievements.
 
-Run server:
-`. server/venv/bin/activate`
-`cd server/`
-`flask run`
+Setup:
+`cd client`
+`npm run react` (run webpack)
+`npm run build` (run tailwind)
+`npm start` (run flask)
