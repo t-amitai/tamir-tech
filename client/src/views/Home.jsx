@@ -1,7 +1,4 @@
 import * as React from 'react'
-import slateLake from '../images/slateLake.jpg'
-import {Link} from "react-router-dom";
-import {BsFillHouseDoorFill} from "react-icons/bs";
 
 export default function Home() {
     return (
