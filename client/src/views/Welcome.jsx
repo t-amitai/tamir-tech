@@ -11,7 +11,7 @@ export default function Welcome() {
                 backgroundImage: `url(${slateLake})`,
             }}
         >
-            <h1 className='mb-10 text-4xl font-bold text-black sm:text-5xl'>
+            <h1 className='mb-5 lg:mb-10 text-2xl lg:text-6xl font-bold text-black'>
                 Welcome
             </h1>
             <Link
