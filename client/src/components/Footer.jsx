@@ -15,7 +15,7 @@ const navigation = [
   },
 ]
 
-export default function Copyright() {
+export default function Footer() {
   return (
     <div className="">
       <div className="flex justify-center space-x-6 md:order-2">
