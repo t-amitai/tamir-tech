@@ -8,7 +8,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"react": "webpack --config ./webpack.config.js --mode development -w",
-		"start": "cd ../server && . venv/bin/activate && export FLASK_APP=dev && flask run",
+		"start": "cd ../server && . venv/bin/activate && flask --app dev run",
 		"build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
 	},
 	"devDependencies": {
