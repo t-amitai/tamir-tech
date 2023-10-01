@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react'
-import {HashRouter, Routes, Route, Redirect, useNavigate} from 'react-router-dom'
+import {HashRouter, Routes, Route} from 'react-router-dom'
 import Home from './views/Home'
 import About from './views/About'
 import Resume from './views/Resume'
-import Welcome, { welcomeAnimation } from './views/Welcome'
+import Welcome from './views/Welcome'
 import UnderConstruction from './views/UnderConstruction'
 import Header from './components/Header'
 import PageNotFound from './views/PageNotFound'
-import Copyright from './components/Copyright'
+import Footer from './components/Footer'
 
 const App = function(){
     const [welcome, setWelcome] = React.useState(true)
@@ -40,7 +40,7 @@ const App = function(){
                 </Routes>
             </main>
             <footer className="lg:text-4xl">
-                <Copyright/>
+                <Footer />
             </footer>
         </div>
         </HashRouter>
