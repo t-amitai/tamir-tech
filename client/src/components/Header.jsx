@@ -28,7 +28,7 @@ function HeaderButton({nav}) {
 export default function Header() {
     return (
         <nav>
-            <ul className="flex flex-row items-center text-sm lg:text-lg 2xl:text-4xl">
+            <ul className="flex flex-row items-center text-sm lg:text-lg ">
                 {navigation.map(nav => (
                     <li key={nav.link}>
                         <HeaderButton nav={nav} />

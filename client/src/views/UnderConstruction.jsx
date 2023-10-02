@@ -4,7 +4,7 @@ import { BsFillHouseDoorFill } from 'react-icons/bs';
 
 export default function UnderConstruction() {
     return (
-        <div className='text-lg lg:text-xl 2xl:text-4xl mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-48'>
+        <div className='text-lg lg:text-xl mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-48'>
             <h1 className='mt-2 font-bold tracking-tight text-black '>
                 This page is currently under construction.
             </h1>
