@@ -23,7 +23,3 @@ export default function Welcome() {
         </div>
     )
 }
-
-export function welcomeAnimation(){
-    console.log('welcome animation!')
-}
