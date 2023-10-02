@@ -7,7 +7,8 @@
 	"license": "All rights reserved",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"react": "webpack --config ./webpack.config.js --mode development -w",
+		"dev": "webpack --config ./webpack.config.js --mode development -w",
+		"prod": "webpack --config ./webpack.config.js --mode production",
 		"start": "cd ../server && . venv/bin/activate && flask --app dev run",
 		"build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
 	},
