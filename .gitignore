@@ -6,5 +6,6 @@ client/dist/assets/*
 server/__pycache__
 server/api/__pycache__
 server/resume.pdf
+server/.env
 
 .idea
