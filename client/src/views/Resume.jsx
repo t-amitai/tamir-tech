@@ -17,11 +17,11 @@ async function requestResume(password) {
 }
 export default function Resume() {
     return(
-        <div className='mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-48'>
+        <div className='text-lg lg:text-xl 2xl:text-4xl mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-48'>
             <p className=''>Resume</p>
             <form>
                 <label
-                className='text-lg lg:text-xl font-bold text-black'
+                className='font-bold text-black'
                 >
                     Name:
                     <input type="text" name="name" />

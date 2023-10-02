@@ -23,8 +23,8 @@ function HeaderButton({nav}) {
                     />
             } </Link>
     );
-
 }
+
 export default function Header() {
     return (
         <nav>
@@ -37,7 +37,5 @@ export default function Header() {
             </ul>
         </nav>
     )
-
-
 }
 

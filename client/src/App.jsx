@@ -29,7 +29,7 @@ const App = function(){
             <header className="">
                 <Header />
             </header>
-            <main className="text-lg 2xl:text-2xl">
+            <main className="">
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="welcome" element={<Welcome />} />
@@ -39,7 +39,7 @@ const App = function(){
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </main>
-            <footer className="lg:text-4xl">
+            <footer className="">
                 <Footer />
             </footer>
         </div>
