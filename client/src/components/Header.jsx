@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import iconPic from '../images/iconPic.jpg'
 
 const navigation= [
-    {name:'Home', link:'/home'},
+    {name:'Home', link:'/'},
     {name:'About', link:'/about'},
     {name:'Resume', link:'/resume'},
     {name:'Projects', link:'/projects'},
@@ -28,7 +28,7 @@ function HeaderButton({nav}) {
 export default function Header() {
     return (
         <nav>
-            <ul className="flex flex-row items-center ">
+            <ul className="flex flex-row items-center text-sm lg:text-lg 2xl:text-4xl">
                 {navigation.map(nav => (
                     <li key={nav.link}>
                         <HeaderButton nav={nav} />

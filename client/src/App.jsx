@@ -26,15 +26,15 @@ const App = function(){
         <div
             className="min-h-screen bg-gradient-to-b from-cyan-400 to-teal-400 flex flex-col justify-between"
         >
-            <header className="text-sm lg:text-lg 2xl:text-4xl">
+            <header className="">
                 <Header />
             </header>
             <main className="text-lg 2xl:text-2xl">
                 <Routes>
+                    <Route path="/" element={<Home />} />
                     <Route path="welcome" element={<Welcome />} />
-                    <Route path="home" element={<Home />} />
                     <Route path="about" element={<About />} />
-                    <Route path="resume" element={<Resume />} />
+                    <Route path="resume" element={<UnderConstruction />} />
                     <Route path="projects" element={<UnderConstruction />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>

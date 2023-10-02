@@ -15,7 +15,7 @@ export default function Welcome() {
                 Welcome
             </h1>
             <Link
-                to='/home'
+                to='/'
             >
                 <BsFillHouseDoorFill />
             </Link>
