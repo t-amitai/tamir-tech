@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {HashRouter, Routes, Route} from 'react-router-dom'
 import Home from './views/Home'
 import About from './views/About'
@@ -10,7 +10,7 @@ import PageNotFound from './views/PageNotFound'
 import Footer from './components/Footer'
 
 const App = function(){
-    const [welcome, setWelcome] = React.useState(true)
+    const [welcome, setWelcome] = useState(false)
 
     /* Welcome animation */
     useEffect(() => {
@@ -34,7 +34,7 @@ const App = function(){
                     <Route path="/" element={<Home />} />
                     <Route path="welcome" element={<Welcome />} />
                     <Route path="about" element={<About />} />
-                    <Route path="resume" element={<UnderConstruction />} />
+                    <Route path="resume" element={<Resume />} />
                     <Route path="projects" element={<UnderConstruction />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
