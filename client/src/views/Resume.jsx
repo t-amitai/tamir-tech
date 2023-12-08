@@ -8,23 +8,27 @@ import React, {useEffect, useState} from 'react'
 export default function Resume() {
     const [resumeData, setResumeData] = useState(null)
     const [password, setPassword] = useState('');
-    const [authenticated, setAuthenticated] = useState(false)
-
-    async function requestResume() {
-        const response = await fetch('https://api.tamir.tech/resume', {
-            method: "GET",
+    const [authenticated, setAuthenticated] = useState(false);
+    function requestResume() {
+        fetch('https://api.tamir.tech/resume', {
+            method: "POST",
             body: JSON.stringify({password: password}), // body data type must match "Content-Type" header
-        });
+        }).then(response => {
+            if (response.ok) {
+                response.text().then((text)=> {
+                    setResumeData(text)
+                    setAuthenticated(true)
+                })
+            }
+            else if (response.status >= 500 && response.status < 600) {
+                alert('Server is down!')
+            } else if (response.status == 401) {
+                alert('Wrong password!')
+            } else {
+                throw new Error('unexpected status from server');
+            }
+        }).catch((e) => {throw new Error(e)});
 
-        if (response.ok) {
-            setResumeData(response.body)
-            setAuthenticated(true)
-        }
-        else if (response.status >= 500 && response.status < 600) {
-            alert('Server is down!')
-        } else {
-            alert('Wrong password!')
-        }
     }
 
     return(
@@ -34,26 +38,22 @@ export default function Resume() {
                 !authenticated ?
                     <div>
                         <label>
-                            password:
+                            Password:
                             <input
                                 type='password' value={password}
                                 onChange={e => setPassword(e.target.value)}
+                                autocomplete="off"
                             />
                         </label>
                         <button type='submit' onClick={requestResume}>Submit</button>
                     </div>
                 :
-                    <div>
-                        <object data={`data:application/pdf;base64,${resumeData}`} type='application/pdf'></object>
-                    </div>
+                    <iframe
+                        src={`data:application/pdf;base64,${resumeData}`}
+                        width="100%"
+                        height="600px"
+                    ></iframe>
             }
-            {/*<p className='mt-2 font-medium text-black'>*/}
-            {/*    Based out of colorful Colorado, I fill my days outside of coding...outside!*/}
-            {/*</p>*/}
-            {/*<p className='mt-2 font-medium text-black text-opacity-50'>*/}
-            {/*    Some pictures I have taken:*/}
-            {/*</p>*/}
-            {/*<ImageCarousel images={images} />*/}
         </div>
     )
 }
