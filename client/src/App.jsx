@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {HashRouter, Routes, Route} from 'react-router-dom'
 import Home from './views/Home'
 import About from './views/About'
@@ -10,7 +10,7 @@ import PageNotFound from './views/PageNotFound'
 import Footer from './components/Footer'
 
 const App = function(){
-    const [welcome, setWelcome] = React.useState(true)
+    const [welcome, setWelcome] = useState(true)
 
     /* Welcome animation */
     useEffect(() => {
@@ -26,20 +26,20 @@ const App = function(){
         <div
             className="min-h-screen bg-gradient-to-b from-cyan-400 to-teal-400 flex flex-col justify-between"
         >
-            <header className="text-sm lg:text-lg 2xl:text-4xl">
+            <header className="">
                 <Header />
             </header>
-            <main className="text-lg 2xl:text-2xl">
+            <main className="">
                 <Routes>
+                    <Route path="/" element={<Home />} />
                     <Route path="welcome" element={<Welcome />} />
-                    <Route path="home" element={<Home />} />
                     <Route path="about" element={<About />} />
                     <Route path="resume" element={<Resume />} />
                     <Route path="projects" element={<UnderConstruction />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </main>
-            <footer className="lg:text-4xl">
+            <footer className="">
                 <Footer />
             </footer>
         </div>

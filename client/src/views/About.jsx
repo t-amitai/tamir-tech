@@ -46,12 +46,12 @@ const ImageCarousel = ({ images }) => {
 
 export default function About() {
     return(
-        <div className='h-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex-col justify-between text-center'>
-            <p className='text-base lg:text-xl font-bold text-black'>About me</p>
-            <p className='mt-2 text-lg font-medium text-black'>
+        <div className='h-full text-base lg:text-lg mx-auto mb-5 max-w-7xl px-4 sm:px-6 lg:px-8 flex-col justify-between text-center'>
+            <p className='text-lg lg:text-xl font-bold text-black'>About me</p>
+            <p className='mt-2 font-medium text-black'>
                 Based out of colorful Colorado, I fill my days outside of coding...outside!
             </p>
-            <p className='mt-2 text-lg font-medium text-black text-opacity-50'>
+            <p className='mt-2 font-medium text-black text-opacity-50'>
                 Some pictures I have taken:
             </p>
             <ImageCarousel images={images} />

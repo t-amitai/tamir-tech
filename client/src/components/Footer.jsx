@@ -17,7 +17,7 @@ const navigation = [
 
 export default function Footer() {
   return (
-    <div className="">
+    <div className="text-xl">
       <div className="flex justify-center space-x-6">
         {navigation.map(nav => (
           <a key={nav.name} href={nav.href} className="hover:text-gray-500">
@@ -26,7 +26,7 @@ export default function Footer() {
         ))}
       </div>
       <div className="mt-8 md:mt-0">
-        <p className="text-center text-base ">
+        <p className="text-center">
             &copy; {new Date().getFullYear()} Tamir Amitai. All rights reserved.
         </p>
       </div>
