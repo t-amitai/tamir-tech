@@ -1,11 +1,10 @@
 client/node_modules
 client/dist/bundle.js
 client/dist/output.css
-client/dist/assets/*
+client/dist/assets
 
 server/__pycache__
 server/api/__pycache__
-server/resume.pdf
 server/.env
 server/assets
 
