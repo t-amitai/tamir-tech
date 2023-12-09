@@ -1,14 +1,9 @@
 import React, {useEffect, useState} from 'react'
 
-
-
-
-
-
 export default function Resume() {
     const [resumeData, setResumeData] = useState(null)
-    const [password, setPassword] = useState('');
-    const [authenticated, setAuthenticated] = useState(false);
+    const [password, setPassword] = useState('')
+    const [authenticated, setAuthenticated] = useState(false)
     function requestResume() {
         fetch('https://api.tamir.tech/resume', {
             method: "POST",
@@ -25,10 +20,12 @@ export default function Resume() {
             } else if (response.status == 401) {
                 alert('Wrong password!')
             } else {
-                throw new Error('unexpected status from server');
+                throw new Error('unexpected status from server')
             }
-        }).catch((e) => {throw new Error(e)});
-
+        }).catch((e) => {
+            alert('Server is down!')
+            throw new Error(e)
+        })
     }
 
     return(
@@ -41,8 +38,9 @@ export default function Resume() {
                             Password:
                             <input
                                 type='password' value={password}
-                                onChange={e => setPassword(e.target.value)}
+                                onChange={e => setPassword(escape(e.target.value))}
                                 autocomplete="off"
+                                className="mx-2"
                             />
                         </label>
                         <button type='submit' onClick={requestResume}>Submit</button>

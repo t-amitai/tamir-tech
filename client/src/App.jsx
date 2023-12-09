@@ -10,7 +10,7 @@ import PageNotFound from './views/PageNotFound'
 import Footer from './components/Footer'
 
 const App = function(){
-    const [welcome, setWelcome] = useState(false)
+    const [welcome, setWelcome] = useState(true)
 
     /* Welcome animation */
     useEffect(() => {
