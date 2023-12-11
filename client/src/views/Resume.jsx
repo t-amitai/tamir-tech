@@ -5,9 +5,11 @@ export default function Resume() {
     const [password, setPassword] = useState('')
     const [authenticated, setAuthenticated] = useState(false)
     function requestResume() {
-        fetch('https://api.tamir.tech/resume', {
-            method: "POST",
-            body: JSON.stringify({password: password}), // body data type must match "Content-Type" header
+        fetch('https://tamir.tech/resume', {
+            method: 'POST',
+            mode: 'cors',
+            referrerPolicy: 'same-origin',
+            body: JSON.stringify({password: password}),
         }).then(response => {
             if (response.ok) {
                 response.text().then((text)=> {
