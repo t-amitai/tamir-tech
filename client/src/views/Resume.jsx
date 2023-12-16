@@ -19,9 +19,10 @@ export default function Resume() {
             }
             else if (response.status >= 500 && response.status < 600) {
                 alert('Server is down!')
-            } else if (response.status == 401) {
+            } else if (response.status == 406) {
                 alert('Wrong password!')
             } else {
+                alert('Server is down!')
                 throw new Error('unexpected status from server')
             }
         }).catch((e) => {
