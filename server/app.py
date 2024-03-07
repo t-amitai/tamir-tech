@@ -1,12 +1,11 @@
 from flask import Flask, send_from_directory, request, abort
-from flask_restful import Api
 from json import loads
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
+
 app = Flask(__name__, static_url_path='', static_folder='./../client/dist')
-api = Api(app)
 
 
 @app.route("/", defaults={'path':''})
