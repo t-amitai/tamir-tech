@@ -20,24 +20,24 @@ const ImageCarousel = ({ images }) => {
     }
 
     return (
-        <div className="relative">
+        <div className=''>
             <button
-                className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-full"
+                className=''
                 onClick={prevSlide}
             >
                 &lt;
             </button>
             <button
-                className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-full"
+                className=''
                 onClick={nextSlide}
             >
                 &gt;
             </button>
-            <div className="mx-auto w-auto md:w-2/3 2xl:w-full">
+            <div className=''>
                 <img
+                    className=''
                     src={images[currentIndex]}
                     alt={`Image ${currentIndex}`}
-                    className="w-full rounded-lg shadow-lg"
                 />
             </div>
         </div>
@@ -46,12 +46,12 @@ const ImageCarousel = ({ images }) => {
 
 export default function About() {
     return(
-        <div className='h-full text-base lg:text-lg mx-auto mb-5 max-w-7xl px-4 sm:px-6 lg:px-8 flex-col justify-between text-center'>
-            <p className='text-lg lg:text-xl font-bold text-black'>About me</p>
-            <p className='mt-2 font-medium text-black'>
+        <div className=''>
+            <p className=''>About me</p>
+            <p className=''>
                 Based out of colorful Colorado, I fill my days outside of coding...outside!
             </p>
-            <p className='mt-2 font-medium text-black text-opacity-50'>
+            <p className=''>
                 Some pictures I have taken:
             </p>
             <ImageCarousel images={images} />
