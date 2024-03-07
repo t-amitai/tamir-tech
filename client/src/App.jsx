@@ -24,12 +24,12 @@ const App = function(){
     return (
         <HashRouter>
         <div
-            className='h-screen bg-gradient-to-b from-cyan-400 to-teal-400 flex flex-col justify-between'
+            className='h-screen w-screen flex flex-col justify-between bg-gradient-to-b from-cyan-400 to-teal-400'
         >
             <header className=''>
                 <Header />
             </header>
-            <main className=''>
+            <main className='text-center'>
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='welcome' element={<Welcome />} />
@@ -39,7 +39,7 @@ const App = function(){
                     <Route path='*' element={<PageNotFound />} />
                 </Routes>
             </main>
-            <footer className=''>
+            <footer className='text-center h-15'>
                 <Footer />
             </footer>
         </div>

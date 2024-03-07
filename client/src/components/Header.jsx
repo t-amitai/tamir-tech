@@ -14,11 +14,11 @@ function HeaderButton({nav}) {
             <Link to={nav.link}> {
                 nav.name !== 'Home' ?
                     <button
-                        className=""
+                        className='button-primary text-header'
                     >{nav.name}</button>
                 :
                     <button
-                        className=""
+                        className='h-12 w-12 xl:h-20 xl:w-20 rounded-full bg-cover bg-center'
                         style={{backgroundImage:`url(${iconPic})`}}
                     />
             } </Link>
@@ -27,15 +27,13 @@ function HeaderButton({nav}) {
 
 export default function Header() {
     return (
-        <nav>
-            <ul className="">
-                {navigation.map(nav => (
-                    <li key={nav.link}>
-                        <HeaderButton nav={nav} />
-                    </li>
-                ))}
-            </ul>
-        </nav>
+        <ul className='flex flex-row justify-start items-center'>
+            {navigation.map(nav => (
+                <li key={nav.link} className='m-2'>
+                    <HeaderButton nav={nav} />
+                </li>
+            ))}
+        </ul>
     )
 }
 

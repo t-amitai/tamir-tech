@@ -1,6 +1,6 @@
 import React from 'react'
 import {BiLogoGithub} from 'react-icons/bi'
-import {BiLogoLinkedin} from "react-icons/bi";
+import {BiLogoLinkedin} from 'react-icons/bi';
 
 const navigation = [
   {
@@ -17,16 +17,16 @@ const navigation = [
 
 export default function Footer() {
   return (
-    <div className="">
-      <div className="">
+    <div className='text-header'>
+      <div className='flex flex-row justify-center space-x-3 xl:space-x-6'>
         {navigation.map(nav => (
-          <a key={nav.name} href={nav.href} className="">
+          <a key={nav.name} href={nav.href} className='hover:text-gray-500'>
               {nav.icon}
           </a>
         ))}
       </div>
-      <div className="">
-        <p className="">
+      <div className=''>
+        <p className=''>
             &copy; {new Date().getFullYear()} Tamir Amitai. All rights reserved.
         </p>
       </div>
