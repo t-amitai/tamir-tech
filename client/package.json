@@ -8,9 +8,9 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "webpack --config ./webpack.config.js --mode development -w",
-		"prod": "webpack --config ./webpack.config.js --mode production",
+		"css": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
 		"start": "cd ../server && . venv/bin/activate && flask --app app run",
-		"build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+		"build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css && webpack --config ./webpack.config.js --mode production"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.2",
@@ -35,5 +35,6 @@
 		"react-dom": "^17.0.2",
 		"react-icons": "^4.11.0",
 		"react-router-dom": "^6.3.0"
-	}
+	},
+	"proxy": "http://localhost:8081"
 }
