@@ -9,7 +9,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "webpack --config ./webpack.config.js --mode development -w",
 		"prod": "webpack --config ./webpack.config.js --mode production",
-		"start": "cd ../server && . venv/bin/activate && flask --app dev run",
+		"start": "cd ../server && . venv/bin/activate && flask --app app run",
 		"build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
 	},
 	"devDependencies": {
