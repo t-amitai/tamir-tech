@@ -10,16 +10,25 @@ import PageNotFound from './views/PageNotFound'
 import Footer from './components/Footer'
 
 const App = function(){
-    const [welcome, setWelcome] = useState(true)
-
-    /* Welcome animation */
-    useEffect(() => {
-        if (welcome) {
-            const url = new URL(window.location.href)
-            window.location.replace(url.origin + '#/welcome')
-            setWelcome(false)
+    function setCookie() {
+        const daysToExpire = 1
+        const timestamp = new Date()
+        timestamp.setTime(timestamp.getTime() + (daysToExpire * 24 * 60 * 60 * 1000))
+        const expireTimestamp = timestamp.toUTCString()
+        document.cookie = `expires=${expireTimestamp}`
+    }
+    function checkIsWelcome() {
+        const cookieArray = document.cookie.split('; ')
+        const cookie = cookieArray.find(cookie => cookie.startsWith('expires='))
+        if (cookie) {
+            const expireTimestamp = new Date(cookie.split('=')[1])
+            const timestamp = new Date()
+            return expireTimestamp < timestamp
         }
-    }, [])
+        return true;
+    }
+
+    const [isWelcome, setWelcome] = useState(checkIsWelcome)
 
     return (
         <HashRouter>
@@ -31,8 +40,11 @@ const App = function(){
             </header>
             <main className='h-full'>
                 <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='welcome' element={<Welcome />} />
+                    <Route path='/' 
+                        element={
+                            !isWelcome ? <Home /> : <Welcome setWelcome={setWelcome} setCookie={setCookie}/>
+                        }
+                    />
                     <Route path='about' element={<About />} />
                     <Route path='resume' element={<Resume />} />
                     <Route path='projects' element={<UnderConstruction />} />
