@@ -6,7 +6,8 @@ import {BsFillHouseDoorFill} from "react-icons/bs";
 export default function Welcome() {
     return(
         <div
-            className=''
+            className='fixed top-0 left-0 h-screen w-screen bg-cover 
+                flex flex-col items-center justify-center text-title'
             style={{
                 backgroundImage: `url(${slateLake})`,
             }}

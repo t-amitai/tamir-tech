@@ -32,8 +32,8 @@ export default function Resume() {
     }
 
     return(
-        <div className=''>
-            <p className=''>Resume</p>
+        <div className='h-full flex flex-col justify-center text-center text-primary'>
+            <p className='text-header'>Resume</p>
             {
                 !authenticated ?
                     <div>

@@ -4,8 +4,8 @@ import { BsFillHouseDoorFill } from 'react-icons/bs';
 
 export default function UnderConstruction() {
     return (
-        <div className=''>
-            <h1 className=''>
+        <div className='h-full flex flex-col justify-center items-center text-center text-primary'>
+            <h1 className='text-header'>
                 This page is currently under construction.
             </h1>
             <p className=''>

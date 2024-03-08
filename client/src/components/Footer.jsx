@@ -17,7 +17,7 @@ const navigation = [
 
 export default function Footer() {
   return (
-    <div className='text-header'>
+    <div className='text-header text-center'>
       <div className='flex flex-row justify-center space-x-3 xl:space-x-6'>
         {navigation.map(nav => (
           <a key={nav.name} href={nav.href} className='hover:text-gray-500'>

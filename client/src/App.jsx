@@ -10,7 +10,7 @@ import PageNotFound from './views/PageNotFound'
 import Footer from './components/Footer'
 
 const App = function(){
-    const [welcome, setWelcome] = useState(false)
+    const [welcome, setWelcome] = useState(true)
 
     /* Welcome animation */
     useEffect(() => {
@@ -24,12 +24,12 @@ const App = function(){
     return (
         <HashRouter>
         <div
-            className='h-screen w-screen flex flex-col justify-between bg-gradient-to-b from-cyan-400 to-teal-400'
+            className='h-screen w-screen flex flex-col justify-between background-main'
         >
-            <header className=''>
+            <header className='h-50 lg:h-100'>
                 <Header />
             </header>
-            <main className='text-center'>
+            <main className='h-full'>
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='welcome' element={<Welcome />} />
@@ -39,7 +39,7 @@ const App = function(){
                     <Route path='*' element={<PageNotFound />} />
                 </Routes>
             </main>
-            <footer className='text-center h-15'>
+            <footer className='h-15'>
                 <Footer />
             </footer>
         </div>
