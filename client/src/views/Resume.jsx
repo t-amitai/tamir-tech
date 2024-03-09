@@ -3,16 +3,28 @@ import React, {useEffect, useState} from 'react'
 export default function Resume() {
     const [resumeData, setResumeData] = useState(null)
     const [password, setPassword] = useState('')
-    const [authenticated, setAuthenticated] = useState(false)
+    const checkIfAuthenticated = () => {
+        const resume = sessionStorage.getItem('resume')
+        if (resume) {
+            setResumeData(resume)
+            return true
+        }
+        return false
+    }
+    const [authenticated, setAuthenticated] = useState(checkIfAuthenticated)
     function requestResume() {
-        fetch('https://tamir.tech/resume', {
+        fetch('/resume', {
             method: 'POST',
             mode: 'cors',
             referrerPolicy: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({password: password}),
         }).then(response => {
             if (response.ok) {
                 response.text().then((text)=> {
+                    sessionStorage.setItem('resume', text)
                     setResumeData(text)
                     setAuthenticated(true)
                 })
@@ -41,8 +53,8 @@ export default function Resume() {
                             Password:
                             <input
                                 type='password' value={password}
-                                onChange={e => setPassword(escape(e.target.value))}
-                                autocomplete="off"
+                                onChange={e => setPassword(e.target.value)}
+                                autoComplete="off"
                                 className="mx-2"
                             />
                         </label>

@@ -3,7 +3,13 @@ import slateLake from "../images/slateLake.jpg";
 import {Link} from "react-router-dom";
 import {BsFillHouseDoorFill} from "react-icons/bs";
 
-export default function Welcome({setWelcome, setCookie}) {
+export default function Welcome({setWelcome}) {
+
+    function setCookie() {
+        const timestamp = new Date()
+        const expireTimestamp = new Date(timestamp.getTime() + 1 * 24 * 60 * 60 * 1000)
+        document.cookie = `welcome=${timestamp.toUTCString()};expires=${expireTimestamp.toUTCString()}`
+    }
 
     const handleClick = (e) => {
         setWelcome(false)

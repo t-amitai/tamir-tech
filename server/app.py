@@ -17,11 +17,9 @@ def serve(path):
 def resume():
     body = loads(request.data)
     if body['password'] == os.getenv('RESUME_PASSWORD'):
-        with open("assets/resume.txt") as f:
-            data = f.read()
-        return data
+        resumePath = os.getcwd() + '/server/assets/resume.txt'
+        with open(resumePath, 'r') as f:
+            return f.read(), 200, {'Content-Type': 'text/plain'}
     else:
         abort(401)
-
-
 

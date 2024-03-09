@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {HashRouter, Routes, Route} from 'react-router-dom'
 import Home from './views/Home'
 import About from './views/About'
@@ -10,22 +10,13 @@ import PageNotFound from './views/PageNotFound'
 import Footer from './components/Footer'
 
 const App = function(){
-    function setCookie() {
-        const daysToExpire = 1
-        const timestamp = new Date()
-        timestamp.setTime(timestamp.getTime() + (daysToExpire * 24 * 60 * 60 * 1000))
-        const expireTimestamp = timestamp.toUTCString()
-        document.cookie = `expires=${expireTimestamp}`
-    }
     function checkIsWelcome() {
         const cookieArray = document.cookie.split('; ')
-        const cookie = cookieArray.find(cookie => cookie.startsWith('expires='))
+        const cookie = cookieArray.find(cookie => cookie.startsWith('welcome='))
         if (cookie) {
-            const expireTimestamp = new Date(cookie.split('=')[1])
-            const timestamp = new Date()
-            return expireTimestamp < timestamp
+            return false
         }
-        return true;
+        return true
     }
 
     const [isWelcome, setWelcome] = useState(checkIsWelcome)
@@ -42,7 +33,7 @@ const App = function(){
                 <Routes>
                     <Route path='/' 
                         element={
-                            !isWelcome ? <Home /> : <Welcome setWelcome={setWelcome} setCookie={setCookie}/>
+                            isWelcome ? <Welcome setWelcome={setWelcome} /> : <Home />
                         }
                     />
                     <Route path='about' element={<About />} />
