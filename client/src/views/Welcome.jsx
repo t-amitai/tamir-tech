@@ -18,8 +18,7 @@ export default function Welcome({setWelcome}) {
 
     return(
         <div
-            className='fixed top-0 left-0 h-screen w-screen bg-cover 
-                flex flex-col items-center justify-center text-title'
+            className='background flex flex-col items-center justify-center text-title'
             style={{
                 backgroundImage: `url(${slateLake})`,
             }}

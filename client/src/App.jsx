@@ -8,6 +8,7 @@ import UnderConstruction from './views/UnderConstruction'
 import Header from './components/Header'
 import PageNotFound from './views/PageNotFound'
 import Footer from './components/Footer'
+import Space from './components/Space'
 
 const App = function(){
     function checkIsWelcome() {
@@ -24,7 +25,7 @@ const App = function(){
     return (
         <HashRouter>
         <div
-            className='h-screen w-screen flex flex-col justify-between background-main'
+            className='background background-main flex flex-col justify-between'
         >
             <header className='h-50 lg:h-100'>
                 <Header />
@@ -36,6 +37,7 @@ const App = function(){
                             isWelcome ? <Welcome setWelcome={setWelcome} /> : <Home />
                         }
                     />
+                    <Route path='space' element={<Space/>} />
                     <Route path='about' element={<About />} />
                     <Route path='resume' element={<Resume />} />
                     <Route path='projects' element={<UnderConstruction />} />
