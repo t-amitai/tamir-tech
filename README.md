@@ -1,8 +1,9 @@
 # tamir-tech
-Personal website showcasing my technical achievements.
+Personal website for Tamir Amitai.
 
-Setup:
-`cd client`
-`npm run react` (run webpack)
-`npm run build` (run tailwind)
-`npm start` (run flask)
+### Local development setup 
+
+in seperate terminals run:
+- `npm run css` for tailwind
+- `npm run dev` for webpack
+- `npm start` for flask
