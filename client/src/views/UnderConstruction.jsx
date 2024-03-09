@@ -4,17 +4,17 @@ import { BsFillHouseDoorFill } from 'react-icons/bs';
 
 export default function UnderConstruction() {
     return (
-        <div className='text-lg lg:text-xl mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-48'>
-            <h1 className='mt-2 font-bold tracking-tight text-black '>
+        <div className='h-full flex flex-col justify-center items-center text-center text-primary'>
+            <h1 className='text-header'>
                 This page is currently under construction.
             </h1>
-            <p className='mt-2  font-medium text-black text-opacity-50'>
+            <p className=''>
                 Please come back later.
             </p>
-            <div className='mt-6'>
+            <div className=''>
               <Link
                   to='/'
-                  className='inline-flex items-center'
+                  className=''
               >
                 <BsFillHouseDoorFill />
               </Link>

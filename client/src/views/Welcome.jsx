@@ -3,23 +3,32 @@ import slateLake from "../images/slateLake.jpg";
 import {Link} from "react-router-dom";
 import {BsFillHouseDoorFill} from "react-icons/bs";
 
-export default function Welcome() {
+export default function Welcome({setWelcome}) {
+
+    function setCookie() {
+        const timestamp = new Date()
+        const expireTimestamp = new Date(timestamp.getTime() + 1 * 24 * 60 * 60 * 1000)
+        document.cookie = `welcome=${timestamp.toUTCString()};expires=${expireTimestamp.toUTCString()}`
+    }
+
+    const handleClick = (e) => {
+        setWelcome(false)
+        setCookie()
+    }
+
     return(
         <div
-            className='fixed top-0 left-0 h-screen w-screen bg-cover text-2xl lg:text-4xl
-            flex flex-col items-center justify-center'
+            className='fixed top-0 left-0 h-screen w-screen bg-cover 
+                flex flex-col items-center justify-center text-title'
             style={{
                 backgroundImage: `url(${slateLake})`,
             }}
         >
-            <h1 className='mb-5 lg:mb-10 font-bold text-black'>
-                Welcome
-            </h1>
+            <h1>Welcome</h1>
             <Link
+                onClick={handleClick}
                 to='/'
-            >
-                <BsFillHouseDoorFill />
-            </Link>
+            > <BsFillHouseDoorFill /> </Link>
         </div>
     )
 }

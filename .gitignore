@@ -9,3 +9,4 @@ server/.env
 server/assets
 
 .idea
+node_modules

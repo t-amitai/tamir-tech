@@ -3,25 +3,38 @@ import React, {useEffect, useState} from 'react'
 export default function Resume() {
     const [resumeData, setResumeData] = useState(null)
     const [password, setPassword] = useState('')
-    const [authenticated, setAuthenticated] = useState(false)
+    const checkIfAuthenticated = () => {
+        const resume = sessionStorage.getItem('resume')
+        if (resume) {
+            setResumeData(resume)
+            return true
+        }
+        return false
+    }
+    const [authenticated, setAuthenticated] = useState(checkIfAuthenticated)
     function requestResume() {
-        fetch('https://tamir.tech/resume', {
+        fetch('/resume', {
             method: 'POST',
             mode: 'cors',
             referrerPolicy: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({password: password}),
         }).then(response => {
             if (response.ok) {
                 response.text().then((text)=> {
+                    sessionStorage.setItem('resume', text)
                     setResumeData(text)
                     setAuthenticated(true)
                 })
             }
             else if (response.status >= 500 && response.status < 600) {
                 alert('Server is down!')
-            } else if (response.status == 401) {
+            } else if (response.status == 406) {
                 alert('Wrong password!')
             } else {
+                alert('Server is down!')
                 throw new Error('unexpected status from server')
             }
         }).catch((e) => {
@@ -31,8 +44,8 @@ export default function Resume() {
     }
 
     return(
-        <div className='h-full text-base lg:text-lg mx-auto mb-5 max-w-7xl px-4 sm:px-6 lg:px-8 flex-col justify-between text-center'>
-            <p className='text-lg lg:text-xl font-bold text-black'>Resume</p>
+        <div className='h-full flex flex-col justify-center text-center text-primary'>
+            <p className='text-header'>Resume</p>
             {
                 !authenticated ?
                     <div>
@@ -40,8 +53,8 @@ export default function Resume() {
                             Password:
                             <input
                                 type='password' value={password}
-                                onChange={e => setPassword(escape(e.target.value))}
-                                autocomplete="off"
+                                onChange={e => setPassword(e.target.value)}
+                                autoComplete="off"
                                 className="mx-2"
                             />
                         </label>
