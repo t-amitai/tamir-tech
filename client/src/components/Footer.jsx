@@ -5,7 +5,7 @@ import {BiLogoLinkedin} from 'react-icons/bi';
 const navigation = [
   {
     name: 'GitHub',
-    href: 'https://www.github.com/t-amitai',
+    href: 'https://github.com/t-amitai/tamir-tech',
     icon: <BiLogoGithub/>
   },
   {

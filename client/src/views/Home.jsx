@@ -7,7 +7,7 @@ export default function Home() {
                 Hi, I'm Tamir!
             </h1>
             <p className='text-primary'>
-                A Software Engineer with an extensive background in electronics design.<br></br>
+                A Software Engineer with a background in electronics design.<br></br>
                 I'm using this website to showcase my web development skills.<br></br>
                 Please enjoy!
             </p>
