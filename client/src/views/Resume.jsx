@@ -44,7 +44,7 @@ export default function Resume() {
     }
 
     return(
-        <div className='flex flex-col justify-center text-center text-primary'>
+        <div className='flex flex-col grow justify-center text-center text-primary pt-1 md:pt-2'>
             <p className='text-header'>Resume</p>
             {
                 !authenticated ?
@@ -55,7 +55,7 @@ export default function Resume() {
                                 type='password' value={password}
                                 onChange={e => setPassword(e.target.value)}
                                 autoComplete="off"
-                                className="mx-2"
+                                className="mx-2 text-black"
                             />
                         </label>
                         <button type='submit' onClick={requestResume}>Submit</button>
