@@ -19,6 +19,9 @@
 .carousel-image {
     @apply aspect-[4/3] max-w-screen-md
 }
+.about-image {
+    @apply aspect-[3/4] w-24 md:w-48 h-auto
+}
 .text-primary {
     @apply text-white text-xs md:text-base
 }
