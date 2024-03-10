@@ -21,7 +21,7 @@ const App = function(){
         return true
     }
 
-    const [isWelcome, setWelcome] = useState(true)
+    const [isWelcome, setWelcome] = useState(checkIsWelcome)
 
     return (
         <HashRouter>
