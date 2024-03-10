@@ -20,10 +20,8 @@ export default function Welcome({setWelcome}) {
     }, [])
 
     return(
-        <div
-            className='text-center'
-        >
-            <h1 className='text-title'>Welcome</h1>
-        </div>
+        <h1 className='text-center pt-20 md:pt-48 text-xl md:text-2xl text-white'>
+            Welcome
+        </h1>
     )
 }

@@ -21,7 +21,7 @@ const App = function(){
         return true
     }
 
-    const [isWelcome, setWelcome] = useState(false)
+    const [isWelcome, setWelcome] = useState(true)
 
     return (
         <HashRouter>
@@ -29,23 +29,27 @@ const App = function(){
                 <header>
                     <Header />
                 </header>
-                <main 
-                    className='background-image' 
-                    style={{backgroundImage:`url(${slateLake})`}}
-                >
-                    <Routes>
-                        <Route path='/' 
-                            element={
-                                isWelcome ? <Welcome setWelcome={setWelcome} /> : <Home />
-                            }
-                        />
-                        <Route path='about' element={<About />} />
-                        <Route path='resume' element={<Resume />} />
-                        <Route path='interests' element={<Interests />} />
-                        <Route path='*' element={<PageNotFound />} />
-                    </Routes>
+                <main className='relative'>
+                    <div 
+                        className={`background-image ${isWelcome?'':'opacity-25'}`}
+                        style={{backgroundImage:`url(${slateLake})`}}
+                    />
+                    <div className='absolute inset-x-0 top-0'>
+                        <Routes>
+                            <Route path='/' 
+                                element={
+                                    !isWelcome ? <Home /> : <Welcome setWelcome={setWelcome} />
+                                }
+                            />
+                            <Route path='about' element={<About />} />
+                            <Route path='resume' element={<Resume />} />
+                            <Route path='interests' element={<Interests />} />
+                            <Route path='*' element={<PageNotFound />} />
+                        </Routes>
+                    </div>
+                    
                 </main>
-                <footer>
+                <footer className=''>
                     <Footer />
                 </footer>
             </div>

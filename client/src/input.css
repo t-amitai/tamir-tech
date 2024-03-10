@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
+
+@layer base {
+  html {
+    font-family: Montserrat, system-ui sans-serif;
+  }
+}
+
 .color-action {
     @apply min-h-screen bg-gradient-to-b from-cyan-400 to-teal-400
 }
@@ -9,7 +17,7 @@
     @apply w-screen min-h-screen bg-gray-900
 }
 .background-image {
-    @apply aspect-[4/3] w-screen max-w-screen-xl mx-auto bg-cover
+    @apply aspect-[4/3] w-screen max-w-screen-lg max-h-fit mx-auto bg-cover
 }
 .main-content {
     @apply container max-w-screen-xl mx-auto px-4 py-10 md:py-16
