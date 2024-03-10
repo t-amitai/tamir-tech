@@ -4,6 +4,7 @@ import { TbHexagonLetterT } from "react-icons/tb"
 import { TbMenu2 } from "react-icons/tb"
 
 const navigation= [
+    {name:'Contact', link:'/contact'},
     {name:'About', link:'/about'},
     {name:'Resume', link:'/resume'},
     {name:'Interests', link:'/interests'},

@@ -16,7 +16,9 @@ export default function Home() {
                     <Link to='/about'>
                         <button className='button-primary mr-2 mb:mr-4'>About</button>
                     </Link>
-                    <button className='button-primary'>Contact</button>
+                    <Link to='/contact'>
+                        <button className='button-primary mr-2 mb:mr-4'>Contact</button>
+                    </Link>
                 </div>
             </div>
         </section>

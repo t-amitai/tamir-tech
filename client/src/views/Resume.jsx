@@ -12,7 +12,8 @@ export default function Resume() {
         return false
     }
     const [authenticated, setAuthenticated] = useState(checkIfAuthenticated)
-    function requestResume() {
+    function requestResume(e) {
+        e.preventDefault()
         fetch('/resume', {
             method: 'POST',
             mode: 'cors',

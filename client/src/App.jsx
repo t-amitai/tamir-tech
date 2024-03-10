@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {HashRouter, Routes, Route} from 'react-router-dom'
 import Home from './views/Home'
 import Interests from './views/Interests'
+import Contact from './views/Contact'
 import About from './views/About'
 import Resume from './views/Resume'
 import Welcome from './views/Welcome'
@@ -41,6 +42,7 @@ const App = function(){
                                     !isWelcome ? <Home /> : <Welcome setWelcome={setWelcome} />
                                 }
                             />
+                            <Route path='contact' element={<Contact />} />
                             <Route path='about' element={<About />} />
                             <Route path='resume' element={<Resume />} />
                             <Route path='interests' element={<Interests />} />
