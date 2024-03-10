@@ -31,7 +31,7 @@ const App = function(){
                 </header>
                 <main className='relative'>
                     <div 
-                        className={`background-image ${isWelcome?'':'opacity-50'}`}
+                        className={`background-image ${isWelcome?'':'opacity-25'}`}
                         style={{backgroundImage:`url(${slateLake})`}}
                     />
                     <div className='absolute inset-x-0 top-0'>
