@@ -14,10 +14,16 @@
     @apply w-screen min-h-screen bg-gray-900
 }
 .background-image {
-    @apply aspect-[4/3] w-screen max-w-screen-lg max-h-fit mx-auto bg-cover
+    @apply aspect-[4/3] w-screen lg:max-w-screen-lg max-h-fit mx-auto bg-cover
+}
+.carousel-image {
+    @apply aspect-[4/3] max-w-screen-md
 }
 .text-primary {
     @apply text-white text-xs md:text-base
+}
+.text-secondary {
+    @apply text-gray-400 
 }
 .text-title {
     @apply text-xl md:text-2xl

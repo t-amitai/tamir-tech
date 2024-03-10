@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { TbHexagonLetterT } from "react-icons/tb";
+import { TbHexagonLetterT } from "react-icons/tb"
 import { TbMenu2 } from "react-icons/tb"
 
 const navigation= [
@@ -23,10 +23,12 @@ function HeaderButton({nav}) {
 export default function Header() {
     const [isOpen, setOpen] = useState(false)
     return (
-    <nav className="text-gray-400">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="text-secondary">
+        <div className="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-4">
             <Link to="/" className="flex items-center space-x-3 text-white">
-                <span className="text-2xl font-semibold whitespace-nowrap"><TbHexagonLetterT /></span>
+                <span className="text-2xl font-semibold whitespace-nowrap" onClick={()=>{setOpen(false)}} >
+                    <TbHexagonLetterT />
+                </span>
             </Link>
             <button
                 className="inline-flex items-center justify-center p-2 w-10 h-10 text-sm rounded-lg md:hidden"
@@ -38,7 +40,7 @@ export default function Header() {
                 </span>
             </button>
             <div className={`${!isOpen?'hidden':''} w-screen md:block md:w-auto`} >
-                <ul className="font-medium flex flex-col items-center justify-center p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0">
+                <ul className="flex flex-col items-center justify-center p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0">
                     {navigation.map(nav => (
                         <li key={nav.link} onClick={()=>{setOpen(false)}}>
                             <HeaderButton nav={nav} />
