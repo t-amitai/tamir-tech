@@ -1,9 +1,9 @@
 import * as React from 'react'
-import home from '../images/home.png'
+import home from '../images/home.jpg'
 
 export default function Home() {
     return (
-        <section className="main-content text-center">
+        <section className="text-center">
             <div className="flex justify-center mb-16">
                 <img className='image-round' src={home} alt="Image" />
             </div>
