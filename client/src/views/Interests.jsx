@@ -19,26 +19,26 @@ const ImageCarousel = ({ images }) => {
     }
 
     return (
-        <div className='relative flex flex-row h-full w-full'>
+        <div className='inline-flex h-full w-full justify-center items-center'>
             <button
-                className='absolute top-1/2 left-4 button-round'
+                className='button-round'
                 onClick={prevSlide}
             >
                 &lt;
             </button>
-            <button
-                className='absolute top-1/2 right-4 button-round'
-                onClick={nextSlide}
-            >
-                &gt;
-            </button>
-            <div className='mx-auto p-2 h-full w-full lg:w-1/2'>
+            <div className='md:p-2 h-full w-full lg:w-1/2'>
                 <img
                     src={images[currentIndex]}
                     alt={`Image ${currentIndex}`}
                     className='object-contain rounded-lg'
                 />
             </div>
+            <button
+                className='button-round'
+                onClick={nextSlide}
+            >
+                &gt;
+            </button>
         </div>
     );
 };
@@ -46,7 +46,7 @@ const ImageCarousel = ({ images }) => {
 export default function Interests() {
     return(
         <div className='h-full flex flex-col justify-start text-center text-primary'>
-            <p className='text-header'>About me:</p>
+            <p className='text-title'>About me:</p>
             <p>
                 Based out of colorful Colorado, I fill my days outside of coding...outside!<br></br>
                 Some pictures I have taken:

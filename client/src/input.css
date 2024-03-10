@@ -10,29 +10,23 @@
   }
 }
 
-.color-action {
-    @apply min-h-screen bg-gradient-to-b from-cyan-400 to-teal-400
-}
 .background {
     @apply w-screen min-h-screen bg-gray-900
 }
 .background-image {
     @apply aspect-[4/3] w-screen max-w-screen-lg max-h-fit mx-auto bg-cover
 }
-.main-content {
-    @apply container max-w-screen-xl mx-auto px-4 py-10 md:py-16
+.text-primary {
+    @apply text-white text-xs md:text-base
 }
-.text-color-primary {
-    @apply text-gray-700 
-}
-.text-color-secondary {
-    @apply text-gray-400
+.text-title {
+    @apply text-xl md:text-2xl
 }
 .button-primary {
-    @apply px-7 py-3 md:px-9 md:py-4 font-medium md:font-semibold bg-gray-900 text-gray-50 text-sm rounded-md hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500
+    @apply py-1 md:py-2 px-2 md:px-4 rounded-md bg-black text-gray-50 hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500
 }
 .button-round {
-    @apply bg-gray-500 hover:bg-gray-600 text-white mx-auto my-auto py-2 px-4 rounded-full
+    @apply w-8 h-8 rounded-full bg-black text-gray-50 hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500
 }
 .image-round {
     @apply h-20 w-20 md:h-48 md:w-48 rounded-full
