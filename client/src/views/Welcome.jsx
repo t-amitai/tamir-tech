@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import slateLake from "../images/slateLake.jpg";
 import {Link} from "react-router-dom";
 import {BsFillHouseDoorFill} from "react-icons/bs";
@@ -11,23 +11,23 @@ export default function Welcome({setWelcome}) {
         document.cookie = `welcome=${timestamp.toUTCString()};expires=${expireTimestamp.toUTCString()}`
     }
 
-    const handleClick = (e) => {
+    const endWelcome = () => {
         setWelcome(false)
         setCookie()
     }
 
+    useEffect(() => {
+        setTimeout(endWelcome, 2000)
+    }, [])
+
     return(
         <div
-            className='background flex flex-col items-center justify-center text-title'
+            className='screen-content flex flex-col items-center justify-center text-title'
             style={{
                 backgroundImage: `url(${slateLake})`,
             }}
         >
-            <h1>Welcome</h1>
-            <Link
-                onClick={handleClick}
-                to='/'
-            > <BsFillHouseDoorFill /> </Link>
+            <h1 className='text-title'>Welcome</h1>
         </div>
     )
 }

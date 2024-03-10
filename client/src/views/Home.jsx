@@ -1,16 +1,15 @@
 import * as React from 'react'
+import home from '../images/home.png'
 
 export default function Home() {
     return (
-        <div className='h-full flex flex-col justify-center text-center'>
-            <h1 className='text-header mb-2'>
-                Hi, I'm Tamir!
-            </h1>
-            <p className='text-primary'>
-                A Software Engineer with a background in electronics design.<br></br>
-                I'm using this website to showcase my web development skills.<br></br>
-                Please enjoy!
-            </p>
-        </div>
+        <section className="main-content text-center">
+            <div className="flex justify-center mb-16">
+                <img className='image-round' src={home} alt="Image" />
+            </div>
+            <h6 className="text-header mb-8">Tamir Amitai</h6>
+            <h1 className="text-title mb-8">Software Engineer</h1>
+            <p className="text-primary mb-16">I have a passion for electronics. I enjoy building, whether that's on a screen or on a board.</p>
+        </section>
     )
 }
