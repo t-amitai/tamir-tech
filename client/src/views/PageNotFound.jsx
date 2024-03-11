@@ -5,7 +5,7 @@ import {BsFillHouseDoorFill} from "react-icons/bs";
 
 export default function PageNotFound() {
     return (
-        <div className='h-full flex flex-col justify-center items-center text-center text-primary'>
+        <div className='flex flex-col justify-center items-center text-center text-primary'>
             <p className=''>404</p>
             <p className='text-header'>Uh oh! I think you’re lost.</p>
             <p className=''>

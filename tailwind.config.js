@@ -3,7 +3,12 @@
 module.exports = {
   content: ['./client/src/**/*.{js,jsx}'],
   theme: {
-    extend: {},
+    extend: {
+
+      fontFamily: {
+        sans: ["Source Code Pro", 'monospace'],
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/forms')

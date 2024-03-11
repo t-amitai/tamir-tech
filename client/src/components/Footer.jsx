@@ -17,10 +17,10 @@ const navigation = [
 
 export default function Footer() {
   return (
-    <div className='text-header text-center'>
+    <div className='text-gray-400 text-center p-4'>
       <div className='flex flex-row justify-center space-x-3 xl:space-x-6'>
         {navigation.map(nav => (
-          <a key={nav.name} href={nav.href} className='hover:text-gray-500'>
+          <a key={nav.name} href={nav.href} className='hover:text-gray-700'>
               {nav.icon}
           </a>
         ))}

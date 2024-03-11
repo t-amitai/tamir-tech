@@ -12,7 +12,8 @@ export default function Resume() {
         return false
     }
     const [authenticated, setAuthenticated] = useState(checkIfAuthenticated)
-    function requestResume() {
+    function requestResume(e) {
+        e.preventDefault()
         fetch('/resume', {
             method: 'POST',
             mode: 'cors',
@@ -44,8 +45,8 @@ export default function Resume() {
     }
 
     return(
-        <div className='h-full flex flex-col justify-center text-center text-primary'>
-            <p className='text-header'>Resume</p>
+        <div className='flex flex-col grow justify-center text-center text-primary pt-1 md:pt-2'>
+            <p className='text-header pb-1 md:pb-2'>Resume</p>
             {
                 !authenticated ?
                     <div>
@@ -55,7 +56,7 @@ export default function Resume() {
                                 type='password' value={password}
                                 onChange={e => setPassword(e.target.value)}
                                 autoComplete="off"
-                                className="mx-2"
+                                className="mx-2 text-black"
                             />
                         </label>
                         <button type='submit' onClick={requestResume}>Submit</button>

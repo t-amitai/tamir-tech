@@ -1,39 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import iconPic from '../images/iconPic.jpg'
+import { TbHexagonLetterT } from "react-icons/tb"
+import { TbMenu2 } from "react-icons/tb"
 
 const navigation= [
-    {name:'Home', link:'/'},
+    {name:'Contact', link:'/contact'},
     {name:'About', link:'/about'},
     {name:'Resume', link:'/resume'},
-    {name:'Projects', link:'/projects'},
+    {name:'Interests', link:'/interests'},
 ]
 
 function HeaderButton({nav}) {
     return (
-            <Link to={nav.link}> {
-                nav.name !== 'Home' ?
-                    <button
-                        className='button-primary text-header'
-                    >{nav.name}</button>
-                :
-                    <button
-                        className='h-12 w-12 xl:h-20 xl:w-20 rounded-full bg-cover bg-center'
-                        style={{backgroundImage:`url(${iconPic})`}}
-                    />
-            } </Link>
+        <button className="hover:text-gray-700">
+            <Link to={nav.link}>
+                {nav.name}
+            </Link>
+        </button>
     );
 }
 
+
 export default function Header() {
+    const [isOpen, setOpen] = useState(false)
     return (
-        <ul className='flex flex-row justify-start items-center'>
-            {navigation.map(nav => (
-                <li key={nav.link} className='m-2'>
-                    <HeaderButton nav={nav} />
-                </li>
-            ))}
-        </ul>
+    <nav className="text-secondary">
+        <div className="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-4">
+            <Link to="/" className="flex items-center space-x-3 text-white">
+                <span className="text-2xl font-semibold whitespace-nowrap" onClick={()=>{setOpen(false)}} >
+                    <TbHexagonLetterT />
+                </span>
+            </Link>
+            <button
+                className="inline-flex items-center justify-center p-2 w-10 h-10 text-sm rounded-lg md:hidden"
+                onClick={() => {setOpen(!isOpen)}}
+            >
+                <span className="sr-only">Open main menu</span>
+                <span>
+                    <TbMenu2 />
+                </span>
+            </button>
+            <div className={`${!isOpen?'hidden':''} w-screen md:block md:w-auto`} >
+                <ul className="flex flex-col items-center justify-center p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0">
+                    {navigation.map(nav => (
+                        <li key={nav.link} onClick={()=>{setOpen(false)}}>
+                            <HeaderButton nav={nav} />
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+        
+    </nav>
+
     )
 }
 
