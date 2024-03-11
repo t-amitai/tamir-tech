@@ -22,6 +22,8 @@ export default function Contact() {
             body: JSON.stringify(formData),
         }).then(() => {
             setSent(true)
+        }).catch((e) => {
+            throw new Error(e)
         })
     };
 
