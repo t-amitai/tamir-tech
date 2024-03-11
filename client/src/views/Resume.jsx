@@ -46,7 +46,7 @@ export default function Resume() {
 
     return(
         <div className='flex flex-col grow justify-center text-center text-primary pt-1 md:pt-2'>
-            <p className='text-header'>Resume</p>
+            <p className='text-header pb-1 md:pb-2'>Resume</p>
             {
                 !authenticated ?
                     <div>
