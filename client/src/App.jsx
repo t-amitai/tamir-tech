@@ -31,9 +31,9 @@ const App = function(){
                     <Header />
                 </header>
                 <main className='relative'>
-                    <div 
+                    <img 
                         className={`background-image ${isWelcome?'':'opacity-25'}`}
-                        style={{backgroundImage:`url(${slateLake})`}}
+                        src={slateLake}
                     />
                     <div className='absolute inset-x-0 top-0'>
                         <Routes>
@@ -51,7 +51,7 @@ const App = function(){
                     </div>
                     
                 </main>
-                <footer className=''>
+                <footer className='fixed bottom-0 md:relative'>
                     <Footer />
                 </footer>
             </div>

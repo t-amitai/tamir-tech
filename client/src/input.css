@@ -11,13 +11,16 @@
 }
 
 .background {
-    @apply w-screen min-h-screen bg-gray-900
+    @apply w-screen h-screen bg-gray-900
 }
 .background-image {
-    @apply aspect-[4/3] w-screen lg:max-w-screen-lg max-h-fit mx-auto bg-cover bg-scale-down
+    width: 100%;
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .carousel-image {
-    @apply aspect-[4/3] max-w-screen-md
+    @apply max-w-screen-md
 }
 .about-image {
     @apply aspect-[3/4] w-24 md:w-48 h-auto
