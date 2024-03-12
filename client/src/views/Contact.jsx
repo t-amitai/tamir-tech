@@ -18,6 +18,7 @@ export default function Contact() {
         }).then((response) => {
             if (response.ok()) {
                 sessionStorage.setItem('sent', true)
+                localStorage.removeItem('contact')
                 setResult('Thanks for messaging!')
             } else {
                 setResult('I could not send your message.')
