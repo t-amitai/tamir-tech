@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import {BiLogoLinkedin} from 'react-icons/bi';
+import {BiXCircle} from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 export default function Resume() {
     const [resumeData, setResumeData] = useState(null)
@@ -62,11 +63,16 @@ export default function Resume() {
                     <button type='submit' onClick={requestResume}>Submit</button>
                 </div>
             :
+            <div className='text-title'>
+                <Link to='/'>
+                    <BiXCircle />
+                </Link>
                 <iframe
                     src={`data:application/pdf;base64,${resumeData}`}
                     width="100%"
                     height="600px"
                 ></iframe>
+            </div>
             }
         </div>
     )
