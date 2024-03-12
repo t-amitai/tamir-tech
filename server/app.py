@@ -1,4 +1,5 @@
 from flask import Flask, send_from_directory, request, abort
+import yagmail
 from json import loads
 import os
 from dotenv import load_dotenv
@@ -23,3 +24,18 @@ def resume():
     else:
         abort(401)
 
+@app.post('/contact')
+def contact():
+    try:
+        body = loads(request.data)
+        botSender = "tamitai147@gmail.com"
+        receiver = "tamitai147+tamirtech@gmail.com"
+        subject = "EMAIL FROM " + body['email'] + ': ' + body['subject']
+        password = os.getenv('EMAIL_PASSWORD')
+        yag = yagmail.SMTP(botSender, password)
+        yag.send(to=receiver, subject=subject, contents=body['message'])
+        return '', 200
+    except Exception as e:
+        return '', 500
+
+    
