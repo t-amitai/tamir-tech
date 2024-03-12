@@ -49,7 +49,7 @@ export default function Resume() {
     return(
         <div className='flex flex-col grow justify-center text-center text-primary pt-1 md:pt-2'>
             <h1 className='text-title pb-1 md:pb-2'>Resume</h1>
-            <p className='text-secondary pb-1 md:pb-2'>Ask me for the password</p>
+            <p className={`text-secondary pb-1 md:pb-2 ${authenticated?'hidden':''}`}>Ask me for the password</p>
             {!authenticated ?
                 <div>
                     <label>
