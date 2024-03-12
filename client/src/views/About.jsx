@@ -16,11 +16,11 @@ export default function About() {
                     Hello!
                 </h1>
                 <p className="mb-1 md:mb-2">
-                    My name is Tamir! I am a multidisciplinary engineer adept at building and deploying fullstack applications.
+                    My name is Tamir! I am a multidisciplinary engineer adept at building and deploying full-stack applications.
                 </p>
                 <p className="mb-1 md:mb-2">
-                    I graduated in 2018 with a BS in Electrical Engineering then pivoted my career in 2021 by completing an intensive 
-                    software engineering immserive. I have then worked as an SDET and am moving to development roles.
+                I graduated in 2018 with a BS in Electrical Engineering, then pivoted my career in 2021 by completing an intensive 
+                software engineering immersive. Since then, I have worked as an SDET and am now transitioning to development roles.
                 </p>
             </div>
         </section>

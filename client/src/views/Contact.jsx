@@ -1,46 +1,57 @@
 import React, { useState } from 'react'
 
 export default function Contact() {
-    const [sent, setSent] = useState(false)
-    const [formData, setFormData] = useState({
-        email:'',
-        subject:'',
-        message:''
-    });
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    const [sent, setSent] = useState(sessionStorage.getItem('sent') || false)
+    const [sending, setSending] = useState(false)
+    if (typeof sent === 'string') setSent(sent==='true'?true:false)
+    const [result, setResult] = useState('Thanks for messaging!')
+    const [formData, setFormData] = useState(localStorage.getItem('contact') || {email:'', subject:'', message:''})
+    if (typeof formData === 'string') setFormData(JSON.parse(formData))
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        setSending(true)
         fetch('/contact', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData),
-        }).then(() => {
+        }).then((response) => {
+            if (response.ok) {
+                sessionStorage.setItem('sent', true)
+                localStorage.removeItem('contact')
+                setResult('Thanks for messaging!')
+            } else {
+                setResult('I could not send your message.')
+            }
+            setSending(false)
             setSent(true)
         }).catch((e) => {
+            setResult('There was an issue sending your message.')
+            setSending(false)
+            setSent(true)
             throw new Error(e)
         })
-    };
+    }
+
+    const handleChange = (e) => {
+        const newFormData = {...formData, [e.target.name]: e.target.value}
+        localStorage.setItem('contact', JSON.stringify(newFormData))
+        setFormData(newFormData)
+    }
 
     return(
         <section className="">
             <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
                 <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Me</h2>
                 <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">tamitai147@gmail.com</p>
-                {/* {
+                {
                     !sent ?
-                    <>
-                    <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Me</h2>
-                    <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">tamitai147@gmail.com</p>
-                        <form onSubmit={handleSubmit} className="space-y-8">
+                        <form onSubmit={handleSubmit} className={`space-y-8 ${sending?'hidden':''}`}>
                             <div>
                                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                                <input type="email" name="email" value={formData.email} onChange={handleChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@email.com" required />
+                                <input type="email" name="email" value={formData.email} onChange={handleChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder={"name@email.com"} required />
                             </div>
                             <div>
                                 <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
@@ -52,12 +63,11 @@ export default function Contact() {
                             </div>
                             <button type="submit" className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send message</button>
                         </form>
-                    </>
                     :
                         <h1 className="mt-16 mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
-                            Thanks for messaging!
+                        {result}
                         </h1>
-                } */}
+                }
            </div>
         </section>
     )
