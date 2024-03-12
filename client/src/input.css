@@ -11,7 +11,7 @@
 }
 
 .background {
-    @apply w-screen h-screen bg-gray-900
+    @apply w-screen min-h-screen bg-gray-900
 }
 .background-image {
     width: 100%;
