@@ -1,6 +1,7 @@
 from flask import Flask, send_from_directory, request, abort
 import yagmail
 from json import loads
+from cryptography.fernet import Fernet
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -18,9 +19,12 @@ def serve(path):
 def resume():
     body = loads(request.data)
     if body['password'] == os.getenv('RESUME_PASSWORD'):
+        key = os.getenv('RESUME_KEY')
+        cipher = Fernet(key.encode())
         resumePath = os.getcwd() + '/server/assets/resume.txt'
         with open(resumePath, 'r') as f:
-            return f.read(), 200, {'Content-Type': 'text/plain'}
+            text = cipher.decrypt(f.read()).decode()
+            return text, 200, {'Content-Type': 'text/plain'}
     else:
         abort(401)
 

@@ -6,7 +6,6 @@ client/dist/assets
 server/__pycache__
 server/api/__pycache__
 server/.env
-server/assets
 
 .idea
 node_modules
