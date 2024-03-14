@@ -2,8 +2,10 @@ aniso8601==9.0.1
 blinker==1.7.0
 cachetools==5.3.3
 certifi==2024.2.2
+cffi==1.16.0
 charset-normalizer==3.3.2
 click==8.1.7
+cryptography==42.0.5
 cssselect==1.2.0
 cssutils==2.9.0
 Flask==3.0.2
@@ -16,6 +18,7 @@ lxml==5.1.0
 MarkupSafe==2.1.5
 packaging==23.2
 premailer==3.10.0
+pycparser==2.21
 python-dotenv==1.0.1
 pytz==2024.1
 requests==2.31.0
