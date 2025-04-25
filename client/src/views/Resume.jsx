@@ -37,11 +37,11 @@ export default function Resume() {
             } else if (response.status == 401) {
                 alert('Wrong password!')
             } else {
-                alert('Server is down!')
+                alert('Something is wrong with the server.')
                 throw new Error('unexpected status from server')
             }
         }).catch((e) => {
-            alert('Server is down!')
+            alert('Uncaught error')
             throw new Error(e)
         })
     }
