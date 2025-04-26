@@ -11,4 +11,6 @@ jobs:
         uses: ./.github/actions/update-resume
         with:
           file-url: ${{ vars.FILE_URL }}
+          resume-key: ${{ secrets.RESUME_KEY }}
+          google-key: ${{ secrets.GOOGLE_KEY }}
           

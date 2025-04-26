@@ -1,10 +1,18 @@
 name: 'Update Resume'
 description: 'Updates secure resume on website with google drive link'
+
 inputs:
   file-url:
     description: 'Google drive link'
     required: true
-    default: ''
+  google-key:
+    description: 'Google drive api key'
+    required: true
+  resume-key:
+    description: 'Encryption key'
+    required: true
+  
+
 runs:
   using: "composite"
   steps:
@@ -24,6 +32,7 @@ runs:
       shell: bash
       env:
         FILE_URL: ${{ inputs.file-url }}
+        GOOGLE_KEY: ${{ inputs.google-key }}
 
     - name: Encrypt Data
       id: encrypt-data
@@ -31,10 +40,11 @@ runs:
       shell: bash
       env:
         RAW_DATA: ${{ steps.get-resume.outputs.raw-data }}
+        RESUME_KEY: ${{ inputs.resume-key }}
 
     - name: Raise PR
       id: raise-pr
-      run: node ${{ github.action_path }}/raise.js
+      run: node ${{ github.action_path }}/raisePR.js
       shell: bash
       env:
         ENCRYPTED_DATA: ${{ steps.encrypt-data.outputs.encrypted-data }}
