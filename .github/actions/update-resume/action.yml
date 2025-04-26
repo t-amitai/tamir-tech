@@ -6,25 +6,5 @@ inputs:
     required: true
     default: ''
 runs:
-  using: "composite"
-  steps:
-    - name: Get Resume
-      id: get-resume
-      run: node ${{ github.action_path }}/get.js
-      shell: bash
-      env:
-        FILE_URL: ${{ inputs.file-url }}
-
-    - name: Encrypt Data
-      id: encrypt-data
-      run: node ${{ github.action_path }}/encrypt.js
-      shell: bash
-      env:
-        RAW_DATA: ${{ steps.get-resume.outputs.raw-data }}
-
-    - name: Raise PR
-      id: raise-pr
-      run: node ${{ github.action_path }}/raise.js
-      shell: bash
-      env:
-        ENCRYPTED_DATA: ${{ steps.encrypt-data.outputs.encrypted-data }}
+  using: 'node20'
+  main: 'index.js'
