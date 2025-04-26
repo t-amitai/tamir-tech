@@ -9,6 +9,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Update Resume
         uses: ./.github/actions/update-resume
-        env:
+        with:
           file-url: ${{ vars.FILE_URL }}
           

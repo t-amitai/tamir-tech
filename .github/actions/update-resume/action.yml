@@ -22,7 +22,7 @@ runs:
       id: get-resume
       run: node ${{ github.action_path }}/get.js
       shell: bash
-      with:
+      env:
         FILE_URL: ${{ inputs.file-url }}
 
     - name: Encrypt Data
