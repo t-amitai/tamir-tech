@@ -6,8 +6,8 @@ jobs:
     name: A job to say hello
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/update-resume
+      - id: update-resume
+        uses: ./.github/actions/update-resume
         with:
           file-url: ${{vars.FILE_URL}}
-      - run: 
           
