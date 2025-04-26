@@ -1,34 +1,30 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'Update Resume'
+description: 'Updates secure resume on website with google drive link'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  file-url:
+    description: 'Google drive link'
     required: true
-    default: 'World'
-outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+    default: ''
 runs:
   using: "composite"
   steps:
-    - name: Set Greeting
-      run: echo "Hello $INPUT_WHO_TO_GREET."
+    - name: Get Resume
+      id: get-resume
+      run: node ${{ github.action_path }}/get.js
       shell: bash
       env:
-        INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
+        FILE_URL: ${{ inputs.file-url }}
 
-    - name: Random Number Generator
-      id: random-number-generator
-      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
-      shell: bash
-
-    - name: Set GitHub Path
-      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+    - name: Encrypt Data
+      id: encrypt-data
+      run: node ${{ github.action_path }}/encrypt.js
       shell: bash
       env:
-        GITHUB_ACTION_PATH: ${{ github.action_path }}
+        RAW_DATA: ${{ steps.get-resume.outputs.raw-data }}
 
-    - name: Run goodbye.sh
-      run: goodbye.sh
+    - name: Raise PR
+      id: raise-pr
+      run: node ${{ github.action_path }}/raise.js
       shell: bash
+      env:
+        ENCRYPTED_DATA: ${{ steps.encrypt-data.outputs.encrypted-data }}
