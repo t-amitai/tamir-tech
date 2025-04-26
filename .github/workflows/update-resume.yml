@@ -10,5 +10,5 @@ jobs:
       - name: Update Resume
         uses: ./.github/actions/update-resume
         env:
-          file-url: vars.FILE_URL
+          file-url: ${{ vars.FILE_URL }}
           
