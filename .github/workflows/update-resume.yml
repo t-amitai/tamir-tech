@@ -5,9 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to update the secure resume
     steps:
-      - uses: actions/checkout@v4
-      - id: update-resume
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Update Resume
+        id: update-resume
         uses: ./.github/actions/update-resume
         with:
-          file-url: ${{vars.FILE_URL}}
+          file-url: ${{ vars.FILE_URL }}
           
