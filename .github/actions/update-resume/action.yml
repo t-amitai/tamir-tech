@@ -51,7 +51,10 @@ runs:
 
     - name: Raise PR
       id: raise-pr
-      run: gh pr create -B main -H branch-update-resume --title 'Merge branch_update-resume into main' --body 'Created by Github action'
+      run: |
+        git add .
+        git commit -m "commits new resume"
+        gh pr create -B main -H branch-update-resume --title 'Merge branch_update-resume into main' --body 'Created by Github action'
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
