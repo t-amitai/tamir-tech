@@ -1,0 +1,54 @@
+name: 'Update Resume'
+description: 'Updates secure resume on website with google drive link'
+
+inputs:
+  file-url:
+    description: 'Google drive link'
+    required: true
+  resume-key:
+    description: 'Resume Encryption key'
+    required: true
+  google-service-account:
+    description: 'Google drive service account json key'
+    required: true
+  github-token:
+    description: 'Auto generated github token'
+    required: true
+  
+  
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: npm install
+      shell: bash
+      working-directory: ${{ github.action_path }}
+
+    - name: Get Resume
+      id: get-resume
+      run: node ${{ github.action_path }}/get.js
+      shell: bash
+      env:
+        FILE_URL: ${{ inputs.file-url }}
+        GOOGLE_SERVICE_ACCOUNT: ${{ inputs.google-service-account }}
+
+    - name: Encrypt Data
+      id: encrypt-data
+      run: node ${{ github.action_path }}/encrypt.js
+      shell: bash
+      env:
+        RAW_DATA: ${{ steps.get-resume.outputs.raw-data }}
+        RESUME_KEY: ${{ inputs.resume-key }}
+
+    - name: Raise PR
+      id: raise-pr
+      run: node ${{ github.action_path }}/raisePR.js
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
