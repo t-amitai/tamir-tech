@@ -38,7 +38,7 @@ runs:
 
     - name: Create branch
       id: create-branch
-      run: git checkout -b branch-update-resume
+      run: git checkout -b branch-update-resume-${{ github.run_id }}
       shell: bash
 
     - name: Encrypt Data
@@ -49,12 +49,17 @@ runs:
         RAW_DATA: ${{ steps.get-resume.outputs.raw-data }}
         RESUME_KEY: ${{ inputs.resume-key }}
 
-    - name: Raise PR
-      id: raise-pr
+    - name: Commit changes
+      id: commit-changes
       run: |
         git add .
         git commit -m "commits new resume"
-        gh pr create -B main -H branch-update-resume --title 'Merge branch_update-resume into main' --body 'Created by Github action'
+      shell: bash
+
+    - name: Raise PR
+      id: raise-pr
+      run: node ${{ github.action_path }}/raisePR.js
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
+        BRANCH_NAME: branch-update-resume-${{ github.run_id }}

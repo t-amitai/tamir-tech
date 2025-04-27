@@ -3,7 +3,7 @@ const github = require('@actions/github');
 
 try {
     const token = process.env.GITHUB_TOKEN;
-    const fileUrl = process.env.FILE_URL;
+    const branchName = process.env.BRANCH_NAME;
     
     const octokit = github.getOctokit(token);
 
@@ -12,8 +12,8 @@ try {
     octokit.rest.pulls.create({
         owner,
         repo,
-        title: 'Add new file via GitHub Actions',
-        head: 'branch-' + fileUrl,
+        title: 'Add new resume via GitHub Actions',
+        head: branchName,
         base: 'main',
         body: 'This PR contains a new encrypted resume added by GitHub Actions.',
     }).then(pr => {
