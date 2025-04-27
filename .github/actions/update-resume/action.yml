@@ -28,6 +28,12 @@ runs:
       shell: bash
       working-directory: ${{ github.action_path }}
 
+    - name: Create branch
+      id: create-branch
+      run: |
+        git checkout -b branch-update-resume-${{ github.run_id }}
+      shell: bash
+
     - name: Get Resume
       id: get-resume
       run: node ${{ github.action_path }}/get.js
@@ -35,13 +41,6 @@ runs:
       env:
         FILE_URL: ${{ inputs.file-url }}
         GOOGLE_SERVICE_ACCOUNT: ${{ inputs.google-service-account }}
-
-    - name: Create branch
-      id: create-branch
-      run: |
-        git checkout -b branch-update-resume-${{ github.run_id }}
-        git push origin branch-update-resume-${{ github.run_id }}
-      shell: bash
 
     - name: Encrypt Data
       id: encrypt-data
@@ -58,6 +57,7 @@ runs:
         git config user.email "github-actions[bot]@users.noreply.github.com"
         git add .
         git commit -m "commits new resume"
+        git push origin branch-update-resume-${{ github.run_id }}
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
