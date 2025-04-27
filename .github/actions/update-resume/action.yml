@@ -14,8 +14,6 @@ inputs:
   github-token:
     description: 'Auto generated github token'
     required: true
-  
-  
 
 runs:
   using: "composite"
@@ -38,6 +36,13 @@ runs:
         FILE_URL: ${{ inputs.file-url }}
         GOOGLE_SERVICE_ACCOUNT: ${{ inputs.google-service-account }}
 
+    - name: Create branch
+      id: create-branch
+      run: |
+        git checkout -b branch-update-resume-${{ github.run_id }}
+        git push origin branch-update-resume-${{ github.run_id }}
+      shell: bash
+
     - name: Encrypt Data
       id: encrypt-data
       run: node ${{ github.action_path }}/encrypt.js
@@ -46,9 +51,21 @@ runs:
         RAW_DATA: ${{ steps.get-resume.outputs.raw-data }}
         RESUME_KEY: ${{ inputs.resume-key }}
 
+    - name: Commit changes
+      id: commit-changes
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add .
+        git commit -m "commits new resume"
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+
     - name: Raise PR
       id: raise-pr
       run: node ${{ github.action_path }}/raisePR.js
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
+        BRANCH_NAME: branch-update-resume-${{ github.run_id }}
