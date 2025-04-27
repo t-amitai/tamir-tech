@@ -14,8 +14,6 @@ inputs:
   github-token:
     description: 'Auto generated github token'
     required: true
-  
-  
 
 runs:
   using: "composite"
@@ -38,6 +36,11 @@ runs:
         FILE_URL: ${{ inputs.file-url }}
         GOOGLE_SERVICE_ACCOUNT: ${{ inputs.google-service-account }}
 
+    - name: Create branch
+      id: create-branch
+      run: git checkout -b ${{ inputs.file-url }}
+      shell: bash
+
     - name: Encrypt Data
       id: encrypt-data
       run: node ${{ github.action_path }}/encrypt.js
@@ -52,3 +55,4 @@ runs:
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
+        FILE_URL: ${{ inputs.file-url }}

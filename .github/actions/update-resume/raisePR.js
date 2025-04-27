@@ -3,6 +3,7 @@ const github = require('@actions/github');
 
 try {
     const token = process.env.GITHUB_TOKEN;
+    const fileUrl = process.env.FILE_URL;
     
     const octokit = github.getOctokit(token);
 
@@ -12,7 +13,7 @@ try {
         owner,
         repo,
         title: 'Add new file via GitHub Actions',
-        head: 'update-resume-branch',
+        head: fileUrl,
         base: 'main',
         body: 'This PR contains a new encrypted resume added by GitHub Actions.',
     }).then(pr => {
