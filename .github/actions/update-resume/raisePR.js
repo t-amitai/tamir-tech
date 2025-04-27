@@ -19,6 +19,6 @@ try {
 
     console.log(`Pull request created: ${pr.html_url}`);
 } catch (error) {
-    console.error('Error creating pull request:', error);
-}
+    core.setFailed(error.message);
+  }
 
