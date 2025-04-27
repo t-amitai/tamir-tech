@@ -38,7 +38,7 @@ runs:
 
     - name: Create branch
       id: create-branch
-      run: git checkout -b branch-${{ inputs.file-url }}
+      run: git checkout -b branch-update-resume
       shell: bash
 
     - name: Encrypt Data
@@ -51,8 +51,7 @@ runs:
 
     - name: Raise PR
       id: raise-pr
-      run: node ${{ github.action_path }}/raisePR.js
+      run: gh pr create -B main -H branch-update-resume --title 'Merge branch_update-resume into main' --body 'Created by Github action'
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
-        FILE_URL: ${{ inputs.file-url }}
