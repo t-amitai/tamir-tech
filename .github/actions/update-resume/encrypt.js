@@ -13,6 +13,7 @@ try {
     });
 
     const encryptedData = token.encode(rawData);
+    core.setOutput('encrypted', encryptedData)
 
     fs.writeFile('./server/assets/resume.txt', encryptedData, (err) => {
       if (err) {
