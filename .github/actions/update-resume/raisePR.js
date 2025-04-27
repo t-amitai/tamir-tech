@@ -13,7 +13,7 @@ try {
         owner,
         repo,
         title: 'Add new file via GitHub Actions',
-        head: fileUrl,
+        head: 'branch-' + fileUrl,
         base: 'main',
         body: 'This PR contains a new encrypted resume added by GitHub Actions.',
     }).then(pr => {

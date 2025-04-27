@@ -38,7 +38,7 @@ runs:
 
     - name: Create branch
       id: create-branch
-      run: git checkout -b ${{ inputs.file-url }}
+      run: git checkout -b branch-${{ inputs.file-url }}
       shell: bash
 
     - name: Encrypt Data
