@@ -2,6 +2,15 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const {google} = require('googleapis');
 
+const parseFileID = (url) => {
+  const array = url.split('/');
+  for (let i = 0; i<array.length; i++) {
+    if (array[i] === 'd') {
+      return array[i+1];
+    }
+  }
+}
+
 try {
   const fileUrl = process.env.FILE_URL;
   const fileId = parseFileID(fileUrl);
@@ -35,13 +44,4 @@ try {
   
 } catch (error) {
   core.setFailed(error.message);
-}
-
-const parseFileID = (url) => {
-  const array = url.split('/');
-  for (let i = 0; i<array.length; i++) {
-    if (array[i] === 'd') {
-      return array[i+1];
-    }
-  }
 }
