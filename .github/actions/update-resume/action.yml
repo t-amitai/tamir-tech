@@ -5,12 +5,13 @@ inputs:
   file-url:
     description: 'Google drive link'
     required: true
-  google-key:
-    description: 'Google drive api key'
-    required: true
   resume-key:
-    description: 'Encryption key'
+    description: 'Resume Encryption key'
     required: true
+  google-service-account:
+    description: 'Google drive service account json key'
+    required: true
+  
   
 
 runs:
@@ -32,7 +33,7 @@ runs:
       shell: bash
       env:
         FILE_URL: ${{ inputs.file-url }}
-        GOOGLE_KEY: ${{ inputs.google-key }}
+        GOOGLE_SERVICE_ACCOUNT: ${{ inputs.google-service-account }}
 
     - name: Encrypt Data
       id: encrypt-data

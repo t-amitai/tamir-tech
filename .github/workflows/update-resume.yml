@@ -12,5 +12,5 @@ jobs:
         with:
           file-url: ${{ vars.FILE_URL }}
           resume-key: ${{ secrets.RESUME_KEY }}
-          google-key: ${{ secrets.GOOGLE_KEY }}
+          google-service-account: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
           
