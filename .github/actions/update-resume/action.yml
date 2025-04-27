@@ -55,6 +55,8 @@ runs:
         git add .
         git commit -m "commits new resume"
       shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
 
     - name: Raise PR
       id: raise-pr
