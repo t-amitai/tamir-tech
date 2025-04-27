@@ -36,12 +36,12 @@ try {
       .on('data', chunk => chunks.push(chunk))
       .on('end', () => {
         const fileBuffer = Buffer.concat(chunks);
-        console.log(fileBuffer);
+        const rawData = fileBuffer.toString('base64');
+        core.setOutput('raw-data', rawData)
       })
       .on('error', err => reject(err));
     });
   });
-  
 } catch (error) {
   core.setFailed(error.message);
 }
