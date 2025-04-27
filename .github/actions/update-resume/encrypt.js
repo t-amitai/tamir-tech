@@ -6,9 +6,13 @@ const fernet = require('fernet');
 try {
     const rawData = process.env.RAW_DATA;
     const key = process.env.RESUME_KEY; 
-    const cipher = new fernet.Fernet(key);
+    const secret = new fernet.Secret(key);
 
-    const encryptedData = cipher.encrypt(rawData);
+    const token = new fernet.Token({
+        secret: secret
+    });
+
+    const encryptedData = token.encode(rawData);
 
     fs.writeFile('./server/assets/resume.txt', encryptedData, (err) => {
       if (err) {
