@@ -2,7 +2,6 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
 const crypto = require('crypto');
-const base64 = require('base64');
 
 try {
     const rawData = process.env.RAW_DATA;
@@ -14,7 +13,7 @@ try {
         const cipher = crypto.createCipheriv(algorithm, Buffer.from(key, 'utf-8'), iv);
         let encrypted = cipher.update(string, 'utf-8', 'hex');
         encrypted += cipher.final('hex');
-        return base64.encode(iv.toString('hex') + ':' + encrypted);
+        return iv.toString('hex') + ':' + encrypted;
     }
 
     const encryptedData = encrypt(rawData);
