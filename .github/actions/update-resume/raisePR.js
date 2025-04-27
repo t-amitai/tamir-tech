@@ -7,13 +7,12 @@ try {
     const octokit = github.getOctokit(token);
 
     const { owner, repo } = github.context.repo;
-    const branch = 'update-resume-branch';
 
     const { data: pr } = await octokit.rest.pulls.create({
         owner,
         repo,
         title: 'Add new file via GitHub Actions',
-        head: branch,
+        head: 'update-resume-branch',
         base: 'main',
         body: 'This PR contains a new encrypted resume added by GitHub Actions.',
     });

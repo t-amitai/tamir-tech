@@ -8,7 +8,7 @@ try {
     const key = process.env.RESUME_KEY; 
 
     const token = new fernet.Token({
-      secret: key,
+      secret: key.encode(),
       payload: rawData
     });
     
