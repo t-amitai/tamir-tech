@@ -11,6 +11,9 @@ inputs:
   google-service-account:
     description: 'Google drive service account json key'
     required: true
+  github-token:
+    description: 'Auto generated github token'
+    required: true
   
   
 
@@ -48,4 +51,4 @@ runs:
       run: node ${{ github.action_path }}/raisePR.js
       shell: bash
       env:
-        GITHUB_TOKEN: ${{  secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}

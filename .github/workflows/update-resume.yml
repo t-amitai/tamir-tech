@@ -13,4 +13,5 @@ jobs:
           file-url: ${{ vars.FILE_URL }}
           resume-key: ${{ secrets.RESUME_KEY }}
           google-service-account: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           
