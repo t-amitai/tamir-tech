@@ -38,7 +38,9 @@ runs:
 
     - name: Create branch
       id: create-branch
-      run: git checkout -b branch-update-resume-${{ github.run_id }}
+      run: |
+        git checkout -b branch-update-resume-${{ github.run_id }}
+        git push origin branch-update-resume-${{ github.run_id }}
       shell: bash
 
     - name: Encrypt Data
