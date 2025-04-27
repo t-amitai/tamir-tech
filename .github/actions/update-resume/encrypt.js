@@ -1,25 +1,27 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
-const crypto = require('crypto');
+const fernet = require('fernet');
 
 try {
     const rawData = process.env.RAW_DATA;
     const key = process.env.RESUME_KEY; 
-    const algorithm = 'aes-256-cbc';
 
-    function encrypt(string) {
-        const iv = crypto.randomBytes(16);
-        const cipher = crypto.createCipheriv(algorithm, Buffer.from(key, 'utf-8'), iv);
-        let encrypted = cipher.update(string, 'utf-8', 'hex');
-        encrypted += cipher.final('hex');
-        return iv.toString('hex') + ':' + encrypted;
-    }
+    const token = new fernet.Token({
+      secret: key,
+      payload: rawData
+    });
+    
+    const encrypted = token.encode();
 
-    const encryptedData = encrypt(rawData);
+    fs.writeFile('./server/assets/resume.txt', encrypted, (err) => {
+      if (err) {
+        console.error('Error writing encrypted file:', err);
+      } else {
+        console.log('Encryption successful');
+      }
+    });
 
-    const resumePath = './server/assets/resume.txt';
-    fs.writeFileSync(resumePath, encryptedData);
 } catch (error) {
     core.setFailed(error.message);
 }
