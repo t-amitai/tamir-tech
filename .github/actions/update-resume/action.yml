@@ -47,3 +47,5 @@ runs:
       id: raise-pr
       run: node ${{ github.action_path }}/raisePR.js
       shell: bash
+      env:
+        GITHUB_TOKEN: ${{  secrets.GITHUB_TOKEN }}
