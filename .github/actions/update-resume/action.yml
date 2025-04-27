@@ -47,5 +47,3 @@ runs:
       id: raise-pr
       run: node ${{ github.action_path }}/raisePR.js
       shell: bash
-      env:
-        ENCRYPTED_DATA: ${{ steps.encrypt-data.outputs.encrypted-data }}
