@@ -52,6 +52,8 @@ runs:
     - name: Commit changes
       id: commit-changes
       run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
         git add .
         git commit -m "commits new resume"
       shell: bash
