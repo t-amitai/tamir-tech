@@ -31,8 +31,8 @@ try {
     drive.files.get(
       { fileId: fileId, alt: 'media' },
       { responseType: 'stream' }
-    ).then(data => {
-      data
+    ).then(res => {
+      res.data
       .on('data', chunk => chunks.push(chunk))
       .on('end', () => {
         const fileBuffer = Buffer.concat(chunks);
