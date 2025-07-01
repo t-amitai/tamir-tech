@@ -19,8 +19,8 @@ export default function About() {
                     My name is Tamir! I am a multidisciplinary engineer adept at building and deploying full-stack applications.
                 </p>
                 <p className="mb-1 md:mb-2">
-                I graduated in 2018 with a BS in Electrical Engineering, then pivoted my career in 2021 by completing an intensive 
-                software engineering immersive. Since then, I have worked as an SDET and am now transitioning to development roles.
+                I graduated in 2018 with a B.S. in Electrical Engineering, then pivoted my career in 2021 by completing an intensive 
+                software engineering immersive. Since then, I have worked as an Automation Engineer, where I have grown a passion for Quality Assurance and building reliable test systems.
                 </p>
             </div>
         </section>
