@@ -41,7 +41,7 @@ try {
         const firstHalf = rawData.slice(0, middle);
         const secondHalf = rawData.slice(middle);
         core.setOutput('raw-data-1', firstHalf);
-        core.setOutput('raw-data-2', second Half);
+        core.setOutput('raw-data-2', secondHalf);
       })
       .on('error', err => reject(err));
     });
