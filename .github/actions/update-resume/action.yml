@@ -47,7 +47,8 @@ runs:
       run: node ${{ github.action_path }}/encrypt.js
       shell: bash
       env:
-        RAW_DATA: ${{ steps.get-resume.outputs.raw-data }}
+        RAW_DATA_1: ${{ steps.get-resume.outputs.raw-data-1 }}
+        RAW_DATA_2: ${{ steps.get-resume.outputs.raw-data-2 }}
         RESUME_KEY: ${{ inputs.resume-key }}
 
     - name: Commit changes
