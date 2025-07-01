@@ -37,7 +37,11 @@ try {
       .on('end', () => {
         const fileBuffer = Buffer.concat(chunks);
         const rawData = fileBuffer.toString('base64');
-        core.setOutput('raw-data', rawData)
+        const middle = Math.floor(rawData.length / 2);
+        const firstHalf = rawData.slice(0, middle);
+        const secondHalf = rawData.slice(middle);
+        core.setOutput('raw-data-1', firstHalf);
+        core.setOutput('raw-data-2', second Half);
       })
       .on('error', err => reject(err));
     });
