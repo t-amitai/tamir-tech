@@ -14,10 +14,10 @@ export default function Home() {
                 </p>
                 <div className='inline-flex'>
                     <Link to='/about'>
-                        <button className='button-primary mr-2 mb:mr-4'>About</button>
+                        <button className='button-primary mr-2 md:mr-4'>About</button>
                     </Link>
                     <Link to='/contact'>
-                        <button className='button-primary mr-2 mb:mr-4'>Contact</button>
+                        <button className='button-primary mr-2 md:mr-4'>Contact</button>
                     </Link>
                 </div>
             </div>
