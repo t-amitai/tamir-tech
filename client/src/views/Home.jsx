@@ -8,7 +8,7 @@ export default function Home() {
             <img className='image-round border-2 border-black' src={home} alt="Image" />
             <div className='inline-flex flex-col p-2 w-48 md:w-96'>
                 <h6 className="mb-1 md:mb-2 text-title">Tamir Amitai</h6>
-                <h1 className="mb-2 md:mb-4">Software Engineer - Level 3</h1>
+                <h1 className="mb-2 md:mb-4">Senior Quality Assurance Engineer</h1>
                 <p className="mb-1 md:mb-2">
                     I have a passion for electronics. I enjoy building, whether that's on a screen or on a board.
                 </p>
