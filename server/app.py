@@ -12,7 +12,7 @@ load_dotenv()
 app = Flask(__name__, static_url_path='', static_folder='./../client/dist')
 app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024  # 1MB
 
-limiter = Limiter(get_remote_address, app=app)
+limiter = Limiter(get_remote_address, app=app, storage_uri="memory://")
 
 
 @app.route("/", defaults={'path':''})
