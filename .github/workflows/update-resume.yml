@@ -10,7 +10,7 @@ jobs:
     name: A job to update the secure resume
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Update Resume
         uses: ./.github/actions/update-resume
         with:
