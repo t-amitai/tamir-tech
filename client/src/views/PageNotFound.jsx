@@ -7,7 +7,7 @@ export default function PageNotFound() {
     return (
         <div className='flex flex-col justify-center items-center text-center text-primary'>
             <p className=''>404</p>
-            <p className='text-header'>Uh oh! I think you’re lost.</p>
+            <p className='text-title'>Uh oh! I think you’re lost.</p>
             <p className=''>
               The page you’re looking for doesn't exist.
             </p>

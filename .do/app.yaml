@@ -1,0 +1,19 @@
+name: tamir-tech
+region: nyc
+services:
+  - name: web
+    github:
+      repo: t-amitai/tamir-tech
+      branch: main
+      deploy_on_push: false  # We handle deploys via GitHub Actions
+    build_command: npm install && npm run build && pip install -r requirements.txt
+    run_command: gunicorn server.app:app
+    environment_slug: python
+    http_port: 8000
+    envs:
+      - key: RESUME_PASSWORD_HASH
+        type: SECRET
+      - key: RESUME_KEY
+        type: SECRET
+      - key: EMAIL_PASSWORD
+        type: SECRET

@@ -9,6 +9,7 @@ cryptography==42.0.5
 cssselect==1.2.0
 cssutils==2.9.0
 Flask==3.0.2
+Flask-Limiter==3.5.1
 gunicorn==21.2.0
 idna==3.6
 importlib_metadata==7.0.2
