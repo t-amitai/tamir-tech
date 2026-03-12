@@ -7,7 +7,7 @@ services:
       branch: main
       deploy_on_push: false  # We handle deploys via GitHub Actions
     build_command: npm install && npm run build && pip install -r requirements.txt
-    run_command: gunicorn server.app:app
+    run_command: gunicorn server.app:app --workers 2 --threads 2 --worker-class gthread --timeout 30
     environment_slug: python
     http_port: 8000
     envs:

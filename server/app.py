@@ -1,4 +1,5 @@
 from flask import Flask, send_from_directory, request, abort, jsonify
+from flask_compress import Compress
 import yagmail
 from werkzeug.security import check_password_hash
 from cryptography.fernet import Fernet
@@ -11,6 +12,7 @@ load_dotenv()
 
 app = Flask(__name__, static_url_path='', static_folder='./../client/dist')
 app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024  # 1MB
+Compress(app)
 
 limiter = Limiter(get_remote_address, app=app, storage_uri="memory://")
 
@@ -18,6 +20,14 @@ limiter = Limiter(get_remote_address, app=app, storage_uri="memory://")
 @app.route("/", defaults={'path':''})
 def serve(path):
     return send_from_directory(app.static_folder,'index.html')
+
+
+@app.after_request
+def add_cache_headers(response):
+    if request.path.endswith(('.js', '.css', '.png', '.jpg', '.jpeg', '.gif', '.ico', '.woff', '.woff2')):
+        response.cache_control.max_age = 31536000
+        response.cache_control.public = True
+    return response
 
 
 @app.post('/resume')
