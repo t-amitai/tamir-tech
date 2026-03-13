@@ -6,7 +6,7 @@ client/dist/assets
 server/__pycache__
 server/api/__pycache__
 server/.env
-venv
+/venv
 .claude
 .idea
 node_modules

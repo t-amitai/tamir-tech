@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+@plugin "@tailwindcss/forms";
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
 
@@ -29,7 +29,7 @@
     @apply text-white text-xs md:text-base
 }
 .text-secondary {
-    @apply text-gray-400 
+    @apply text-gray-400
 }
 .text-title {
     @apply text-xl md:text-2xl
@@ -43,4 +43,3 @@
 .image-round {
     @apply h-20 w-20 md:h-48 md:w-48 rounded-full
 }
-
