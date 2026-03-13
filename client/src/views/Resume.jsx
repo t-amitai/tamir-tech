@@ -57,6 +57,7 @@ export default function Resume() {
                         <input
                             type='password' value={password}
                             onChange={e => setPassword(e.target.value)}
+                            onKeyDown={e => { if (e.key === 'Enter') requestResume(e) }}
                             className="mx-2 text-black"
                         />
                     </label>
