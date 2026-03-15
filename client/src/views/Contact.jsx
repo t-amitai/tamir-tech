@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 const DEFAULT_FORM = { email: '', subject: '', message: '' }
+const STORAGE_KEY = 'contact_v2'
 
 function validate(formData) {
     const errors = {}
@@ -26,7 +27,7 @@ function validate(formData) {
 
 export default function Contact() {
     const [formData, setFormData] = useState(() => {
-        try { return JSON.parse(localStorage.getItem('contact')) || DEFAULT_FORM }
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || DEFAULT_FORM }
         catch { return DEFAULT_FORM }
     })
     const [status, setStatus] = useState(() =>
@@ -35,7 +36,7 @@ export default function Contact() {
     const [errors, setErrors] = useState({})
 
     useEffect(() => {
-        const t = setTimeout(() => localStorage.setItem('contact', JSON.stringify(formData)), 20)
+        const t = setTimeout(() => localStorage.setItem(STORAGE_KEY, JSON.stringify(formData)), 20)
         return () => clearTimeout(t)
     }, [formData])
 
@@ -66,7 +67,7 @@ export default function Contact() {
             })
             if (response.ok) {
                 sessionStorage.setItem('sent', 'true')
-                localStorage.removeItem('contact')
+                localStorage.removeItem(STORAGE_KEY)
                 setStatus('success')
             } else {
                 setStatus('error')
@@ -97,8 +98,8 @@ export default function Contact() {
         return (
             <section>
                 <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md text-center">
-                    <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-black">Something went wrong</h2>
-                    <p className="mb-4 text-black">There was an issue sending your message. Your form data has been preserved.</p>
+                    <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">Something went wrong</h2>
+                    <p className="mb-4 text-gray-300">There was an issue sending your message. Your form data has been preserved.</p>
                     <button onClick={() => setStatus('idle')} className="button-primary mt-4">Try again</button>
                 </div>
             </section>
@@ -110,13 +111,13 @@ export default function Contact() {
     return (
         <section>
             <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-                <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-black">Contact Me</h2>
-                <p className="mb-8 lg:mb-16 font-light text-center text-secondary sm:text-xl">
-                    <a href="mailto:tamitai147@gmail.com" className="text-black hover:text-white transition">tamitai147@gmail.com</a>
+                <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-white">Contact Me</h2>
+                <p className="mb-8 lg:mb-16 font-light text-center text-muted sm:text-xl">
+                    <a href="mailto:tamitai147@gmail.com" className="text-gray-300 hover:text-white transition">tamitai147@gmail.com</a>
                 </p>
                 <form onSubmit={handleSubmit} className="space-y-8">
                     <div>
-                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-black">Your email</label>
+                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-300">Your email</label>
                         <input
                             type="email"
                             name="email"
@@ -130,7 +131,7 @@ export default function Contact() {
                         {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
                     </div>
                     <div>
-                        <label htmlFor="subject" className="block mb-2 text-sm font-medium text-black">Subject</label>
+                        <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-300">Subject</label>
                         <input
                             type="text"
                             name="subject"
@@ -138,13 +139,13 @@ export default function Contact() {
                             value={formData.subject}
                             onChange={handleChange}
                             disabled={isSubmitting}
-                            className="block p-3 w-full text-sm text-white bg-gray-800 rounded-lg border border-gray-600 shadow-sm focus:ring-white focus:border-white placeholder-gray-500"
+                            className="shadow-sm bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-white focus:border-white block w-full p-2.5 placeholder-gray-500"
                             placeholder="Let me know how I can help you"
                         />
                         {errors.subject && <p className="text-red-400 text-sm mt-1">{errors.subject}</p>}
                     </div>
                     <div>
-                        <label htmlFor="message" className="block mb-2 text-sm font-medium text-black">Your message</label>
+                        <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-300">Your message</label>
                         <textarea
                             name="message"
                             id="message"

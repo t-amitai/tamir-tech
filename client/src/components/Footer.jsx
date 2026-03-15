@@ -26,8 +26,8 @@ export default function Footer() {
           </a>
         ))}
       </div>
-      <div className=''>
-        <p className=''>
+      <div>
+        <p>
             &copy; {new Date().getFullYear()} Tamir Amitai. All rights reserved.
         </p>
         <Link to='/privacy' className='text-sm hover:text-gray-700'>Privacy Policy</Link>

@@ -47,7 +47,7 @@ const ImageCarousel = ({ images }) => {
 
 export default function Interests() {
     return(
-        <div className='h-full flex flex-col justify-start text-center text-primary'>
+        <div className='h-full flex flex-col justify-start text-center text-body'>
             <p className='mt-2 md:mt-4'>
                 Based out of colorful Colorado, I fill my days outside of coding...outside!<br></br>
                 Some pictures I have taken:

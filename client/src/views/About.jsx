@@ -3,7 +3,7 @@ import backcountry from '../images/backcountry.jpg'
 
 export default function About() {
     return (
-        <section className="text-primary flex justify-center items-start pt-1 md:pt-4 mt-[2vh]">
+        <section className="text-body flex justify-center items-start pt-1 md:pt-4 mt-[2vh]">
             <div className='about-image mt-1 md:mt-2'>
                 <img
                     src={backcountry}
@@ -11,7 +11,7 @@ export default function About() {
                     className='object-contain rounded-lg'
                 />
             </div>
-            <div className='inline-flex flex-col w-64 md:w-96 ml-[5vh]'>
+            <div className='inline-flex flex-col w-64 md:w-96 ml-4 md:ml-8'>
                 <p className="mb-1 md:mb-2">
                     My name is Tamir! I am a multidisciplinary engineer adept at building and deploying full-stack applications.
                 </p>

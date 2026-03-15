@@ -56,7 +56,7 @@ const App = function(){
                             </div>
 
                         </main>
-                        <footer className='fixed bottom-0 md:relative'>
+                        <footer className='mt-auto'>
                             <Footer />
                         </footer>
                     </div>

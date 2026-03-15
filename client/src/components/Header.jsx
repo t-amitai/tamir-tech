@@ -13,11 +13,9 @@ const navigation= [
 
 function HeaderButton({nav}) {
     return (
-        <button className="hover:text-gray-700">
-            <Link to={nav.link}>
-                {nav.name}
-            </Link>
-        </button>
+        <Link to={nav.link} className="hover:text-gray-700">
+            {nav.name}
+        </Link>
     );
 }
 
@@ -25,7 +23,7 @@ function HeaderButton({nav}) {
 export default function Header() {
     const [isOpen, setOpen] = useState(false)
     return (
-    <nav className="text-secondary">
+    <nav className="text-muted">
         <div className="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-4">
             <Link to="/" className="flex items-center space-x-3 text-white">
                 <span className="text-2xl font-semibold whitespace-nowrap" onClick={()=>{setOpen(false)}} >

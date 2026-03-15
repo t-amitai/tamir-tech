@@ -3,12 +3,7 @@
 module.exports = {
   content: ['./client/src/**/*.{js,jsx}'],
   theme: {
-    extend: {
-
-      fontFamily: {
-        sans: ["Source Code Pro", 'monospace'],
-      },
-    },
+    extend: {},
   },
   plugins: [],
 }
