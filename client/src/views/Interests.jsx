@@ -21,7 +21,7 @@ const ImageCarousel = ({ images }) => {
     }
 
     return (
-        <div className='relative inline-flex h-full w-full justify-center items-center text-white text-2xl font-bold'>
+        <div className='relative inline-flex w-full justify-center items-center text-white text-2xl font-bold'>
             <div className='relative md:p-2 carousel-image'>
                 <img
                     src={images[currentIndex]}
@@ -47,8 +47,8 @@ const ImageCarousel = ({ images }) => {
 
 export default function Interests() {
     return(
-        <div className='h-full flex flex-col justify-start text-center text-body'>
-            <p className='mt-2 md:mt-4'>
+        <div className='min-h-[60vh] flex flex-col justify-start text-center text-body'>
+            <p className='mt-2 sm:mt-3 md:mt-4'>
                 Based out of colorful Colorado, I fill my days outside of coding...outside!<br></br>
                 Some pictures I have taken:
             </p>

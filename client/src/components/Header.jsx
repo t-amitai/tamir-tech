@@ -39,7 +39,7 @@ export default function Header() {
                     <TbMenu2 />
                 </span>
             </button>
-            <div className={`${!isOpen?'hidden':''} w-screen md:block md:w-auto`} >
+            <div className={`${!isOpen?'hidden':''} w-full md:block md:w-auto`} >
                 <ul className="flex flex-col items-center justify-center p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0">
                     {navigation.map(nav => (
                         <li key={nav.link} onClick={()=>{setOpen(false)}}>

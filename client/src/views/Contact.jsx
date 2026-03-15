@@ -86,7 +86,7 @@ export default function Contact() {
     if (status === 'success') {
         return (
             <section>
-                <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md text-center">
+                <div className="py-8 md:py-16 px-4 mx-auto max-w-screen-md text-center">
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">Thanks for messaging!</h2>
                     <button onClick={handleSendAnother} className="button-primary mt-4">Send another</button>
                 </div>
@@ -97,7 +97,7 @@ export default function Contact() {
     if (status === 'error') {
         return (
             <section>
-                <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md text-center">
+                <div className="py-8 md:py-16 px-4 mx-auto max-w-screen-md text-center">
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">Something went wrong</h2>
                     <p className="mb-4 text-gray-300">There was an issue sending your message. Your form data has been preserved.</p>
                     <button onClick={() => setStatus('idle')} className="button-primary mt-4">Try again</button>
@@ -110,9 +110,9 @@ export default function Contact() {
 
     return (
         <section>
-            <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+            <div className="py-8 md:py-16 px-4 mx-auto max-w-screen-md">
                 <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-white">Contact Me</h2>
-                <p className="mb-8 lg:mb-16 font-light text-center text-muted sm:text-xl">
+                <p className="mb-8 md:mb-16 font-light text-center text-muted md:text-xl">
                     <a href="mailto:tamitai147@gmail.com" className="text-gray-300 hover:text-white transition">tamitai147@gmail.com</a>
                 </p>
                 <form onSubmit={handleSubmit} className="space-y-8">
@@ -161,7 +161,7 @@ export default function Contact() {
                     <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="button-primary py-3 px-5 text-sm font-medium inline-flex items-center gap-2 disabled:opacity-50"
+                        className="button-primary text-sm font-medium inline-flex items-center gap-2 disabled:opacity-50"
                     >
                         {isSubmitting && (
                             <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">

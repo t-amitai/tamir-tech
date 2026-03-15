@@ -20,10 +20,10 @@
     @apply max-w-screen-md
 }
 .about-image {
-    @apply aspect-[3/4] w-24 md:w-48 h-auto
+    @apply aspect-[3/4] w-24 sm:w-36 md:w-48 h-auto
 }
 .text-body {
-    @apply text-white text-xs md:text-base
+    @apply text-white text-xs sm:text-sm md:text-base
 }
 .text-muted {
     @apply text-gray-400
@@ -32,11 +32,11 @@
     @apply text-xl md:text-2xl
 }
 .button-primary {
-    @apply py-1 md:py-2 px-2 md:px-4 rounded-md bg-black text-gray-50 hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500
+    @apply py-1.5 sm:py-2 px-3 sm:px-4 rounded-md bg-black text-gray-50 hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500
 }
 .button-round {
-    @apply w-8 h-8 rounded-full bg-black text-gray-50 hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500
+    @apply w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black text-gray-50 hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500
 }
 .image-round {
-    @apply h-20 w-20 md:h-48 md:w-48 rounded-full
+    @apply h-20 w-20 sm:h-32 sm:w-32 md:h-48 md:w-48 rounded-full
 }

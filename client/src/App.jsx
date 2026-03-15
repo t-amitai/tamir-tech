@@ -31,16 +31,16 @@ const App = function(){
                 <Route path='privacy' element={<PrivacyPolicy />} />
                 <Route path='cookies' element={<CookiePolicy />} />
                 <Route path='*' element={
-                    <div className='background'>
+                    <div className='background flex flex-col'>
                         <header>
                             <Header />
                         </header>
-                        <main className='relative'>
+                        <main className='relative flex-1'>
                             <img
-                                className={`background-image ${isWelcome?'':'opacity-25'}`}
+                                className={`background-image absolute inset-0 h-full object-cover ${isWelcome?'':'opacity-25'}`}
                                 src={slateLake}
                             />
-                            <div className='absolute inset-x-0 top-0'>
+                            <div className='relative'>
                                 <Routes>
                                     <Route path='/'
                                         element={
@@ -54,7 +54,6 @@ const App = function(){
                                     <Route path='*' element={<PageNotFound />} />
                                 </Routes>
                             </div>
-
                         </main>
                         <footer className='mt-auto'>
                             <Footer />
