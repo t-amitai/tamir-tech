@@ -9,7 +9,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "webpack --config ./webpack.config.js --mode development -w",
 		"css": "npx tailwindcss -i ./client/src/input.css -o ./client/dist/output.css --watch",
-		"start": "gunicorn server.app:app",
+		"start": ". venv/bin/activate && gunicorn server.app:app",
 		"build": "npx tailwindcss -i ./client/src/input.css -o ./client/dist/output.css && webpack --config ./webpack.config.js --mode production"
 	},
 	"devDependencies": {
