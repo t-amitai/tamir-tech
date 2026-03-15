@@ -6,6 +6,7 @@ import Contact from './views/Contact'
 import About from './views/About'
 import Resume from './views/Resume'
 import PrivacyPolicy from './views/PrivacyPolicy'
+import CookiePolicy from './views/CookiePolicy'
 import Welcome from './views/Welcome'
 import Header from './components/Header'
 import PageNotFound from './views/PageNotFound'
@@ -28,6 +29,7 @@ const App = function(){
         <HashRouter>
             <Routes>
                 <Route path='privacy' element={<PrivacyPolicy />} />
+                <Route path='cookies' element={<CookiePolicy />} />
                 <Route path='*' element={
                     <div className='background'>
                         <header>

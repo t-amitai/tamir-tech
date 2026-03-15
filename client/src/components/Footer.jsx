@@ -31,6 +31,8 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Tamir Amitai. All rights reserved.
         </p>
         <Link to='/privacy' className='text-sm hover:text-gray-700'>Privacy Policy</Link>
+        {' | '}
+        <Link to='/cookies' className='text-sm hover:text-gray-700'>Cookie Policy</Link>
       </div>
     </div>
   )
