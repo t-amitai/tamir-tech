@@ -15,5 +15,9 @@ services:
         type: SECRET
       - key: RESUME_KEY
         type: SECRET
-      - key: EMAIL_PASSWORD
+      - key: GOOGLE_CLIENT_ID
+        type: SECRET
+      - key: GOOGLE_CLIENT_SECRET
+        type: SECRET
+      - key: GOOGLE_REFRESH_TOKEN
         type: SECRET

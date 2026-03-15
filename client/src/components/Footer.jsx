@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import {BiLogoGithub} from 'react-icons/bi'
 import {BiLogoLinkedin} from 'react-icons/bi';
 
@@ -29,6 +30,9 @@ export default function Footer() {
         <p className=''>
             &copy; {new Date().getFullYear()} Tamir Amitai. All rights reserved.
         </p>
+        <Link to='/privacy' className='text-sm hover:text-gray-700'>Privacy Policy</Link>
+        {' | '}
+        <Link to='/cookies' className='text-sm hover:text-gray-700'>Cookie Policy</Link>
       </div>
     </div>
   )
