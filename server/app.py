@@ -9,9 +9,9 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from dotenv import load_dotenv
 
-from server.contact import create_contact_bp
+load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
 
-load_dotenv()
+from server.contact import create_contact_bp
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 

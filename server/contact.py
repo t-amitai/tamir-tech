@@ -10,8 +10,8 @@ from flask import Blueprint, jsonify, request
 
 logger = logging.getLogger(__name__)
 
-SENDER_EMAIL = os.getenv('SENDER_EMAIL', 'tamitai147@gmail.com')
-RECEIVER_EMAIL = os.getenv('RECEIVER_EMAIL', 'tamitai147+tamirtech@gmail.com')
+SENDER_EMAIL = os.getenv('SENDER_EMAIL') or os.getenv('GOOGLE_EMAIL')
+RECEIVER_EMAIL = os.getenv('RECEIVER_EMAIL') or os.getenv('GOOGLE_EMAIL')
 
 MAX_EMAIL_LEN = 254
 MAX_SUBJECT_LEN = 200
@@ -24,9 +24,9 @@ def _get_oauth2_file():
     """Build a yagmail-compatible OAuth2 JSON file from env vars."""
     oauth2_creds = {
         "email_address": SENDER_EMAIL,
-        "client_id": os.environ["GOOGLE_CLIENT_ID"],
-        "client_secret": os.environ["GOOGLE_CLIENT_SECRET"],
-        "refresh_token": os.environ["GOOGLE_REFRESH_TOKEN"],
+        "google_client_id": os.environ["GOOGLE_CLIENT_ID"],
+        "google_client_secret": os.environ["GOOGLE_CLIENT_SECRET"],
+        "google_refresh_token": os.environ["GOOGLE_REFRESH_TOKEN"],
     }
     fd, path = tempfile.mkstemp(suffix=".json")
     with os.fdopen(fd, "w") as f:
@@ -74,6 +74,7 @@ def create_contact_bp(limiter):
         if errors:
             return jsonify(errors=errors), 400
 
+        oauth2_file = None
         try:
             oauth2_file = _get_oauth2_file()
             yag = yagmail.SMTP(SENDER_EMAIL, oauth2_file=oauth2_file)
@@ -90,5 +91,8 @@ def create_contact_bp(limiter):
         except Exception:
             logger.exception("Unexpected error sending contact email")
             return jsonify(errors=['Internal server error']), 500
+        finally:
+            if oauth2_file:
+                os.unlink(oauth2_file)
 
     return bp
