@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { useQuery } from '@apollo/client/react';
 import {
   PieChart,
@@ -11,6 +11,7 @@ import type {
   GitHubRepoAnalyticsData,
   AggregatedLanguage,
   LanguageEdge,
+  LighthouseData,
 } from '../analytics/types';
 
 const GITHUB_OWNER = 't-amitai';
@@ -117,10 +118,140 @@ function GitHubTab() {
   );
 }
 
-function PlaceholderTab({ name }: { name: string }) {
+function ScoreCircle({ label, score }: { label: string; score: number }) {
+  const radius = 36;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (score / 100) * circumference;
+  const color = score >= 90 ? '#22c55e' : score >= 50 ? '#f59e0b' : '#ef4444';
+
   return (
-    <div className="text-center py-16">
-      <p className="text-gray-400 text-sm">{name} analytics coming soon.</p>
+    <div className="flex flex-col items-center gap-2">
+      <svg width="88" height="88" viewBox="0 0 88 88">
+        <circle cx="44" cy="44" r={radius} fill="none" stroke="#374151" strokeWidth="6" />
+        <circle
+          cx="44"
+          cy="44"
+          r={radius}
+          fill="none"
+          stroke={color}
+          strokeWidth="6"
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
+          transform="rotate(-90 44 44)"
+        />
+        <text x="44" y="44" textAnchor="middle" dominantBaseline="central" fill={color} fontSize="20" fontWeight="bold">
+          {score}
+        </text>
+      </svg>
+      <span className="text-xs text-gray-400">{label}</span>
+    </div>
+  );
+}
+
+function MetricCard({ label, value, unit }: { label: string; value: number; unit: string }) {
+  return (
+    <div className="bg-gray-800/60 rounded-lg p-4">
+      <p className="text-gray-400 text-xs mb-1">{label}</p>
+      <p className="text-white text-lg font-semibold">
+        {value}
+        <span className="text-gray-400 text-sm ml-1">{unit}</span>
+      </p>
+    </div>
+  );
+}
+
+function LighthouseTab() {
+  const [state, setState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [data, setData] = useState<LighthouseData | null>(null);
+  const [error, setError] = useState('');
+
+  const runAudit = useCallback(async () => {
+    setState('loading');
+    setError('');
+    try {
+      const res = await fetch('/lighthouse');
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error || `Request failed (${res.status})`);
+      }
+      setData(await res.json());
+      setState('success');
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Unknown error');
+      setState('error');
+    }
+  }, []);
+
+  if (state === 'idle') {
+    return (
+      <div className="text-center py-16">
+        <p className="text-gray-400 text-sm mb-4">
+          Run a Lighthouse audit against <span className="text-gray-200">tamir.tech</span> via Google PageSpeed Insights.
+        </p>
+        <button
+          onClick={runAudit}
+          className="px-5 py-2.5 bg-white text-gray-900 text-sm font-medium rounded-lg hover:bg-gray-200 transition"
+        >
+          Run Lighthouse Audit
+        </button>
+      </div>
+    );
+  }
+
+  if (state === 'loading') {
+    return (
+      <div className="flex flex-col items-center py-16 gap-3">
+        <LoadingSpinner />
+        <p className="text-gray-400 text-sm">Running audit... this may take up to 30 seconds</p>
+      </div>
+    );
+  }
+
+  if (state === 'error') {
+    return (
+      <div>
+        <ErrorMessage message={error} />
+        <div className="text-center mt-4">
+          <button
+            onClick={runAudit}
+            className="text-sm text-blue-400 hover:underline"
+          >
+            Try again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const { scores, metrics, fetchedAt, cached } = data!;
+
+  return (
+    <div>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+        <ScoreCircle label="Performance" score={scores.performance} />
+        <ScoreCircle label="Accessibility" score={scores.accessibility} />
+        <ScoreCircle label="Best Practices" score={scores.bestPractices} />
+        <ScoreCircle label="SEO" score={scores.seo} />
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        <MetricCard label="First Contentful Paint" value={metrics.firstContentfulPaint} unit="s" />
+        <MetricCard label="Largest Contentful Paint" value={metrics.largestContentfulPaint} unit="s" />
+        <MetricCard label="Total Blocking Time" value={metrics.totalBlockingTime} unit="ms" />
+        <MetricCard label="Cumulative Layout Shift" value={metrics.cumulativeLayoutShift} unit="" />
+        <MetricCard label="Speed Index" value={metrics.speedIndex} unit="s" />
+      </div>
+
+      <div className="flex items-center justify-between text-xs text-gray-500">
+        <span>
+          {new Date(fetchedAt).toLocaleString()}
+          {cached && <span className="ml-2 text-gray-600">(cached)</span>}
+        </span>
+        <button onClick={runAudit} className="text-blue-400 hover:underline">
+          Re-run audit
+        </button>
+      </div>
     </div>
   );
 }
@@ -150,7 +281,7 @@ export default function Analytics() {
         </div>
         <div className="p-6 sm:p-8">
           {activeTab === 'github' && <GitHubTab />}
-          {activeTab === 'lighthouse' && <PlaceholderTab name="Lighthouse" />}
+          {activeTab === 'lighthouse' && <LighthouseTab />}
         </div>
       </div>
     </section>
