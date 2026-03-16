@@ -19,15 +19,15 @@ const navigation = [
 export default function Footer() {
   return (
     <div className='text-gray-400 text-center p-4'>
-      <div className='flex flex-row justify-center space-x-3 xl:space-x-6'>
+      <div className='flex flex-row justify-center space-x-3 sm:space-x-4 md:space-x-6'>
         {navigation.map(nav => (
           <a key={nav.name} href={nav.href} className='hover:text-gray-700'>
               {nav.icon}
           </a>
         ))}
       </div>
-      <div className=''>
-        <p className=''>
+      <div>
+        <p>
             &copy; {new Date().getFullYear()} Tamir Amitai. All rights reserved.
         </p>
         <Link to='/privacy' className='text-sm hover:text-gray-700'>Privacy Policy</Link>

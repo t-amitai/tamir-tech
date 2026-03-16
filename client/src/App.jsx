@@ -10,8 +10,11 @@ import CookiePolicy from './views/CookiePolicy'
 import Welcome from './views/Welcome'
 import Header from './components/Header'
 import PageNotFound from './views/PageNotFound'
+import Analytics from './views/Analytics'
 import Footer from './components/Footer'
 import slateLake from './images/slateLake.jpg'
+import { ApolloProvider } from '@apollo/client/react'
+import { apolloClient } from './analytics/client'
 
 const App = function(){
     function checkIsWelcome() {
@@ -26,21 +29,22 @@ const App = function(){
     const [isWelcome, setWelcome] = useState(checkIsWelcome)
 
     return (
+        <ApolloProvider client={apolloClient}>
         <HashRouter>
             <Routes>
                 <Route path='privacy' element={<PrivacyPolicy />} />
                 <Route path='cookies' element={<CookiePolicy />} />
                 <Route path='*' element={
-                    <div className='background'>
+                    <div className='background flex flex-col'>
                         <header>
                             <Header />
                         </header>
-                        <main className='relative'>
+                        <main className='relative flex-1'>
                             <img
-                                className={`background-image ${isWelcome?'':'opacity-25'}`}
+                                className={`background-image absolute inset-0 h-full object-cover ${isWelcome?'':'opacity-25'}`}
                                 src={slateLake}
                             />
-                            <div className='absolute inset-x-0 top-0'>
+                            <div className='relative'>
                                 <Routes>
                                     <Route path='/'
                                         element={
@@ -51,18 +55,19 @@ const App = function(){
                                     <Route path='about' element={<About />} />
                                     <Route path='resume' element={<Resume />} />
                                     <Route path='interests' element={<Interests />} />
+                                    <Route path='analytics' element={<Analytics />} />
                                     <Route path='*' element={<PageNotFound />} />
                                 </Routes>
                             </div>
-
                         </main>
-                        <footer className='fixed bottom-0 md:relative'>
+                        <footer className='mt-auto'>
                             <Footer />
                         </footer>
                     </div>
                 } />
             </Routes>
         </HashRouter>
+        </ApolloProvider>
     )
 }
 

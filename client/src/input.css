@@ -6,40 +6,37 @@
 
 @layer base {
   html {
-    font-family: Montserrat, system-ui sans-serif;
+    font-family: Montserrat, system-ui, sans-serif;
   }
 }
 
 .background {
-    @apply w-screen min-h-screen bg-gray-900
+    @apply w-full min-h-screen bg-gray-900
 }
 .background-image {
-    width: 100%;
-    max-width: 1024px;
-    margin-left: auto;
-    margin-right: auto;
+    @apply w-full max-w-screen-lg mx-auto
 }
 .carousel-image {
     @apply max-w-screen-md
 }
 .about-image {
-    @apply aspect-[3/4] w-24 md:w-48 h-auto
+    @apply aspect-[3/4] w-24 sm:w-36 md:w-48 h-auto
 }
-.text-primary {
-    @apply text-white text-xs md:text-base
+.text-body {
+    @apply text-white text-xs sm:text-sm md:text-base
 }
-.text-secondary {
+.text-muted {
     @apply text-gray-400
 }
 .text-title {
     @apply text-xl md:text-2xl
 }
 .button-primary {
-    @apply py-1 md:py-2 px-2 md:px-4 rounded-md bg-black text-gray-50 hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500
+    @apply py-1.5 sm:py-2 px-3 sm:px-4 rounded-md bg-black text-gray-50 hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500
 }
 .button-round {
-    @apply w-8 h-8 rounded-full bg-black text-gray-50 hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500
+    @apply w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black text-gray-50 hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500
 }
 .image-round {
-    @apply h-20 w-20 md:h-48 md:w-48 rounded-full
+    @apply h-20 w-20 sm:h-32 sm:w-32 md:h-48 md:w-48 rounded-full
 }

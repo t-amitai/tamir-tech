@@ -20,7 +20,7 @@ export default function Welcome({setWelcome}) {
     }, [])
 
     return(
-        <h1 className='text-center pt-20 md:pt-48 text-xl md:text-2xl text-white'>
+        <h1 className='text-center pt-20 sm:pt-32 md:pt-48 text-xl md:text-2xl text-white'>
             Welcome
         </h1>
     )

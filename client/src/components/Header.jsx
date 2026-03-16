@@ -9,15 +9,14 @@ const navigation= [
     {name:'About', link:'/about'},
     {name:'Resume', link:'/resume'},
     {name:'Interests', link:'/interests'},
+    {name:'Analytics', link:'/analytics'},
 ]
 
 function HeaderButton({nav}) {
     return (
-        <button className="hover:text-gray-700">
-            <Link to={nav.link}>
-                {nav.name}
-            </Link>
-        </button>
+        <Link to={nav.link} className="hover:text-gray-700">
+            {nav.name}
+        </Link>
     );
 }
 
@@ -25,7 +24,7 @@ function HeaderButton({nav}) {
 export default function Header() {
     const [isOpen, setOpen] = useState(false)
     return (
-    <nav className="text-secondary">
+    <nav className="text-muted">
         <div className="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-4">
             <Link to="/" className="flex items-center space-x-3 text-white">
                 <span className="text-2xl font-semibold whitespace-nowrap" onClick={()=>{setOpen(false)}} >
@@ -41,7 +40,7 @@ export default function Header() {
                     <TbMenu2 />
                 </span>
             </button>
-            <div className={`${!isOpen?'hidden':''} w-screen md:block md:w-auto`} >
+            <div className={`${!isOpen?'hidden':''} w-full md:block md:w-auto`} >
                 <ul className="flex flex-col items-center justify-center p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0">
                     {navigation.map(nav => (
                         <li key={nav.link} onClick={()=>{setOpen(false)}}>

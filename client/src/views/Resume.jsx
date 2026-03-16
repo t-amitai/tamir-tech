@@ -47,9 +47,9 @@ export default function Resume() {
     }
 
     return(
-        <div className='flex flex-col grow justify-center text-center text-primary pt-1 md:pt-2'>
-            <h1 className='text-title pb-1 md:pb-2'>Resume</h1>
-            <p className={`text-secondary pb-1 md:pb-2 ${authenticated?'hidden':''}`}>Ask me for the password</p>
+        <div className='flex flex-col grow justify-center text-center text-body pt-2 sm:pt-3 md:pt-4'>
+            <h1 className='text-title pb-2 sm:pb-3 md:pb-4'>Resume</h1>
+            <p className={`text-muted pb-2 sm:pb-3 md:pb-4 ${authenticated?'hidden':''}`}>Ask me for the password</p>
             {!authenticated ?
                 <div>
                     <label>
@@ -58,10 +58,10 @@ export default function Resume() {
                             type='password' value={password}
                             onChange={e => setPassword(e.target.value)}
                             onKeyDown={e => { if (e.key === 'Enter') requestResume(e) }}
-                            className="mx-2 text-black"
+                            className="mx-2 text-black rounded-lg p-1.5 sm:p-2"
                         />
                     </label>
-                    <button type='submit' onClick={requestResume}>Submit</button>
+                    <button type='submit' onClick={requestResume} className='button-primary'>Submit</button>
                 </div>
             :
             <div className='text-title'>
@@ -70,8 +70,7 @@ export default function Resume() {
                 </Link>
                 <iframe
                     src={`data:application/pdf;base64,${resumeData}`}
-                    width="100%"
-                    height="600px"
+                    className="w-full h-[50vh] sm:h-[65vh] md:h-[80vh]"
                 ></iframe>
             </div>
             }
