@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
 
 from server.contact import create_contact_bp
+from server.github import create_github_bp
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -21,11 +22,12 @@ Compress(app)
 
 limiter = Limiter(get_remote_address, app=app, storage_uri="memory://")
 app.register_blueprint(create_contact_bp(limiter))
+app.register_blueprint(create_github_bp(limiter))
 
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def serve(path):
+@app.get('/')
+@app.get('/<path:path>')
+def serve(path=''):
     return send_from_directory(app.static_folder, 'index.html')
 
 

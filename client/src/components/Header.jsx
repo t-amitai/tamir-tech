@@ -9,6 +9,7 @@ const navigation= [
     {name:'About', link:'/about'},
     {name:'Resume', link:'/resume'},
     {name:'Interests', link:'/interests'},
+    {name:'Analytics', link:'/analytics'},
 ]
 
 function HeaderButton({nav}) {

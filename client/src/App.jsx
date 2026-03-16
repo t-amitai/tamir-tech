@@ -10,8 +10,11 @@ import CookiePolicy from './views/CookiePolicy'
 import Welcome from './views/Welcome'
 import Header from './components/Header'
 import PageNotFound from './views/PageNotFound'
+import Analytics from './views/Analytics'
 import Footer from './components/Footer'
 import slateLake from './images/slateLake.jpg'
+import { ApolloProvider } from '@apollo/client/react'
+import { apolloClient } from './analytics/client'
 
 const App = function(){
     function checkIsWelcome() {
@@ -26,6 +29,7 @@ const App = function(){
     const [isWelcome, setWelcome] = useState(checkIsWelcome)
 
     return (
+        <ApolloProvider client={apolloClient}>
         <HashRouter>
             <Routes>
                 <Route path='privacy' element={<PrivacyPolicy />} />
@@ -51,6 +55,7 @@ const App = function(){
                                     <Route path='about' element={<About />} />
                                     <Route path='resume' element={<Resume />} />
                                     <Route path='interests' element={<Interests />} />
+                                    <Route path='analytics' element={<Analytics />} />
                                     <Route path='*' element={<PageNotFound />} />
                                 </Routes>
                             </div>
@@ -62,6 +67,7 @@ const App = function(){
                 } />
             </Routes>
         </HashRouter>
+        </ApolloProvider>
     )
 }
 
