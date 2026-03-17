@@ -33,6 +33,7 @@ def _run_audit():
                 ('category', 'seo'),
                 ('key', PSI_API_KEY),
             ],
+            headers={'Referer': SITE_URL},
             timeout=90,
         )
     except requests.Timeout:
