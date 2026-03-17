@@ -1,5 +1,8 @@
 name: tamir-tech
 region: nyc
+domains:
+  - domain: tamir.tech
+    type: PRIMARY
 services:
   - name: web
     github:
