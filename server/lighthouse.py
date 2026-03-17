@@ -26,7 +26,7 @@ def _run_audit():
             PSI_API_URL,
             params=[
                 ('url', SITE_URL),
-                ('strategy', 'mobile'),
+                ('strategy', 'desktop'),
                 ('category', 'performance'),
                 ('category', 'accessibility'),
                 ('category', 'best-practices'),
