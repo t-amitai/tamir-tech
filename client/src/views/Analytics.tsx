@@ -170,13 +170,40 @@ function LighthouseTab() {
     setState('loading');
     setError('');
     try {
-      const res = await fetch('/lighthouse');
-      if (!res.ok) {
-        const body = await res.json().catch(() => null);
-        throw new Error(body?.error || `Request failed (${res.status})`);
+      const startRes = await fetch('/lighthouse', { method: 'POST' });
+      const startBody = await startRes.json().catch(() => null);
+
+      if (!startRes.ok && startRes.status !== 202) {
+        throw new Error(startBody?.error || `Request failed (${startRes.status})`);
       }
-      setData(await res.json());
-      setState('success');
+
+      // If cached result was returned directly
+      if (startBody?.status === 'done' && startBody?.scores) {
+        setData(startBody as LighthouseData);
+        setState('success');
+        return;
+      }
+
+      // Poll for results
+      const poll = async (): Promise<void> => {
+        const res = await fetch('/lighthouse');
+        const body = await res.json().catch(() => null);
+
+        if (body?.status === 'done' && body?.scores) {
+          setData(body as LighthouseData);
+          setState('success');
+          return;
+        }
+
+        if (body?.status === 'error' || (res.status >= 400 && res.status !== 404)) {
+          throw new Error(body?.error || `Audit failed (${res.status})`);
+        }
+
+        await new Promise((r) => setTimeout(r, 2000));
+        return poll();
+      };
+
+      await poll();
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Unknown error');
       setState('error');
@@ -203,7 +230,7 @@ function LighthouseTab() {
     return (
       <div className="flex flex-col items-center py-16 gap-3">
         <LoadingSpinner />
-        <p className="text-gray-400 text-sm">Running audit... this may take up to 30 seconds</p>
+        <p className="text-gray-400 text-sm">Running audit... this may take up to a minute</p>
       </div>
     );
   }
